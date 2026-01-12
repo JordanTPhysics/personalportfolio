@@ -1,26 +1,92 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
+@layer theme, base, components, utilities;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer theme {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --accent-orange: #FFA500;
+    --background: #F7F6F2;
+    --foreground: #171717;
+    --accent-blue: #4A90E2;
+    --accent-red: #C85A5A;
   }
 }
 
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-slate-600-transparent: rgba(71, 85, 105, 0.8);
+  --font-kode-mono: var(--font-kode-mono);
+}
+
+@layer utilities {
+  .text-h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.1;
+  }
+
+  .text-h2 {
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    line-height: 1.15;
+  }
+
+  .text-h3 {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    line-height: 1.2;
+  }
+
+  .text-body {
+    font-size: clamp(1rem, 1.2vw, 1.125rem);
+    line-height: 1.6;
+  }
+
+  .text-small {
+    font-size: clamp(0.875rem, 1vw, 1rem);
+    line-height: 1.5;
+  }
+
+  .inset-border:hover {
+    border-style: inset;
+  }
+
+  .font-kode-mono {
+    font-family: var(--font-kode-mono), monospace;
+  }
+
+  .font-titillium-web {
+    font-family: var(--font-titillium-web), sans-serif;
+    font-weight: 600;
+  }
+
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .bg-slate-600-transparent {
+    background-color: rgba(71, 85, 105, 0.8);
+  }
+
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--background) url('/images/background.png') no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  font-family: var(--font-titillium-web), sans-serif;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1 }
+  50% { opacity: 0 }
+}
+
+.cursor {
+  animation: blink 1s infinite;
 }
