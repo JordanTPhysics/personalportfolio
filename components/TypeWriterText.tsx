@@ -68,7 +68,7 @@ export default function TypeWriterText({
 
 
   return (
-    <span className={`${textColor} font-kode-mono transition-colors duration-300`}>
+    <span className={`${textColor} font-space-mono transition-colors duration-300`}>
       {displayed}
       <span className="cursor text-black">|</span>
     </span>

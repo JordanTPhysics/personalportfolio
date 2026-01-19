@@ -1,13 +1,14 @@
 
 import type { Metadata } from "next";
-import { Kode_Mono, Titillium_Web, Science_Gothic } from "next/font/google";
+import { Space_Mono, Titillium_Web, Science_Gothic } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-const kodeMono = Kode_Mono({
-  variable: "--font-kode-mono",
+const spaceMono = Space_Mono({
+  variable: "--font-space-mono",
   subsets: ["latin"],
+  weight: ["400", "700"],
 });
 
 const titilliumWeb = Titillium_Web({
@@ -36,7 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${kodeMono.variable} ${titilliumWeb.variable} ${scienceGothic.variable} antialiased min-h-screen bg-[#F7F6F2]`}
+        className={`${spaceMono.variable} ${titilliumWeb.variable} ${scienceGothic.variable} antialiased min-h-screen bg-[#F7F6F2]`}
       >
         <Header />
         {children}

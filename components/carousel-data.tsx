@@ -14,14 +14,14 @@ const techStackData: CarouselItem[] = [
     bgColor: "#3776AB",
     icon: <Image src="/images/python.png" alt="Python" width={80} height={80} className="object-contain" />,
     title: "Python",
-    desc: "I'd be shocked if a data scientist didn't have python in their toolbelt. It's a general purpose programming language but it's great at automating tasks."
+    desc: "I'd be shocked if a data scientist didn't have python in their toolbelt. It's a general purpose programming language but it's great at automating data collection, exploratory data analysis, web scraping, ETL, and building machine learning models"
   },
   {
     id: 2,
     bgColor: "#11557C",
     icon: <Image src="/images/matplotlib.png" alt="MatPlotLib" width={80} height={80} className="object-contain" />,
     title: "MatPlotLib",
-    desc: "Creates data visualizations and charts that make insights clear and actionable. Transforms numbers into visual stories."
+    desc: "Python's go-to library for data visualization. Primarily used during exploratory data analysis for quick insights and relationshps between metrics"
   },
   {
     id: 3,
@@ -35,14 +35,14 @@ const techStackData: CarouselItem[] = [
     bgColor: "#009688",
     icon: <Image src="/images/fastapi.svg" alt="FastAPI" width={80} height={80} className="object-contain" />,
     title: "FastAPI",
-    desc: "Builds APIs to connect data systems and enable real-time access to insights. Connects your data to dashboards and applications."
+    desc: "As the name suggests, FastAPI provides speedy API development and documentation. Stores, loads and validates data for dashboards and processing."
   },
   {
     id: 5,
     bgColor: "#4479A1",
     icon: <Image src="/images/mysql.svg" alt="MySQL" width={80} height={80} className="object-contain" />,
     title: "MySQL",
-    desc: "Database management for storing and querying business data. Ensures reliable access to sales records, customer information, and operational metrics."
+    desc: "The final step of the ETL process. works with FastAPI to store and query data for dashboards and processing."
   },
   {
     id: 6,
@@ -70,7 +70,7 @@ const techStackData: CarouselItem[] = [
     bgColor: "#217346",
     icon: <Image src="/images/excel.svg" alt="Excel" width={80} height={80} className="object-contain" />,
     title: "Excel",
-    desc: "Familiar business tool for data analysis and reporting. Works with your existing workflows and makes insights accessible."
+    desc: "Great All-Rounder. While it lacks the flexibility of SQL and Python, it's easy to use and good for exporting reports quickly"
   },
   {
     id: 10,

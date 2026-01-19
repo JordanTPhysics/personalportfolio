@@ -30,7 +30,7 @@ export default function ProjectCard({
             />
           </div>
           <div className="p-6">
-            <h3 className="text-h3 font-semibold font-kode-mono mb-2">{title}</h3>
+            <h3 className="text-h3 font-semibold font-space-mono mb-2">{title}</h3>
             {description && (
               <p className="text-body">{description}</p>
             )}
