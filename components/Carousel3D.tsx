@@ -24,9 +24,16 @@ export default function Carousel3D({ onActiveIndexChange }: Carousel3DProps) {
     const data = carouselData;
     const itemsPerView = data.length;
     const isMobile = useMediaQuery("(max-width: 768px)");
+    const arrowColour = carouselData[(angle / 360 * itemsPerView)].bgColor;
 
     const rotate = (delta: number) => {
-        setAngle((prev) => prev + delta);
+        if (angle + delta >= 360) {
+            setAngle(0);
+        } else if (angle + delta <= 0) {
+            setAngle(324);
+        } else {
+            setAngle((prev) => prev + delta);
+        }
     };
 
     // Calculate which item is facing the front
@@ -43,7 +50,7 @@ export default function Carousel3D({ onActiveIndexChange }: Carousel3DProps) {
     }, [angle, itemsPerView, onActiveIndexChange]);
 
     return (
-        <div className="flex items-center min-h-[50vh] relative">
+        <div className={`flex items-center min-h-[50vh] relative bg-[${arrowColour}]`}>
             <div className="perspective-1000 relative w-[400px] h-[260px] overflow-hidden">
                 <div
                     className="absolute top-1/2 md:left-2/3 lg:left-2/3 left-7/12 transition-transform duration-500"
@@ -84,10 +91,10 @@ export default function Carousel3D({ onActiveIndexChange }: Carousel3DProps) {
 
             <div className="absolute lg:left-0 left-1/6 top-1/2 -translate-y-1/2 flex flex-col gap-4">
                 <button className="rounded-full" onClick={() => rotate(-360 / itemsPerView)}>
-                    <IoIosArrowDropupCircle size={isMobile ? 36 : 48} color="turquoise" />
+                    <IoIosArrowDropupCircle size={isMobile ? 36 : 48} color={arrowColour} />
                 </button>
                 <button className="rounded-full" onClick={() => rotate(360 / itemsPerView)}>
-                    <IoIosArrowDropdownCircle size={isMobile ? 36 : 48} color="turquoise" />
+                    <IoIosArrowDropdownCircle size={isMobile ? 36 : 48} color={arrowColour} />
                 </button>
             </div>
         </div>

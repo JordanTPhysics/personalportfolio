@@ -68,7 +68,7 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full lg:w-2/3 mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label htmlFor="name" className="block text-sm font-semibold mb-1">
@@ -127,6 +127,8 @@ export default function ContactForm() {
           >
             <option value="">Select a topic</option>
             <option value="Revenue Growth">Revenue Growth</option>
+            <option value="Data Collection">Data Collection</option>
+            <option value="Data Governance">Data Governance</option>
             <option value="Cost Savings">Cost Savings</option>
             <option value="Customer Analysis">Customer Analysis</option>
             <option value="Forecasting">Forecasting</option>
@@ -146,7 +148,7 @@ export default function ContactForm() {
           rows={6}
           value={formData.message}
           onChange={handleChange}
-          className="w-full border border-black px-4 py-2 bg-background focus:outline-none focus:ring-2 focus:ring-black resize-none"
+          className="w-full lg:w-1/2  border border-black px-4 py-2 bg-background focus:outline-none focus:ring-2 focus:ring-black resize-none"
         />
       </div>
 
@@ -165,7 +167,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="border mx-auto border-black px-8 py-3 font-semibold bg-background hover:bg-blue-500 hover:text-white duration-200 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
+        className="border mx-auto border-black px-8 py-3 font-semibold bg-background hover:bg-blue-500 hover:text-white hover:border-white duration-200 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {isSubmitting ? "Sending..." : "Send Message"}
       </button>

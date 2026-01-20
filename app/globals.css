@@ -37,6 +37,11 @@
     line-height: 1.2;
   }
 
+  .text-h4 {
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    line-height: 1.2;
+  }
+
   .text-body {
     font-size: clamp(1rem, 1.2vw, 1.125rem);
     line-height: 1.6;

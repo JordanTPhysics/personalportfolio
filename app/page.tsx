@@ -54,7 +54,7 @@ export default function Home() {
       <section id="about" className="border-l border-r border-black ">
         <div className="lg:grid lg:grid-cols-5 lg:grid-rows-2 grid-cols-1 grid-rows-2 text-white bg-slate-600-transparent">
           <h2 className="text-h2 bg-background text-black min-h-20 font-semibold tracking-tight text-accent-blue col-span-4 row-span-1 border-b px-2">
-            Hi, I'm Jordan Thijssen, your <br/> <TypeWriterText texts={roles} />
+            Hi, I'm Jordan Thijssen, your <br /> <TypeWriterText texts={roles} />
           </h2>
 
           <div className="col-span-1 row-span-2 flex flex-col text-right border-l bg-background text-black">
@@ -117,7 +117,7 @@ export default function Home() {
         <div className="flex flex-col">
           <h2 className="text-h2 font-semibold font-space-mono px-2 border-b">A Clear Strategy: Data Driven Outcomes in 4 Steps</h2>
           <div className="flex flex-col p-6 gap-6">
-            <div 
+            <div
               ref={(el) => { stepRefs.current[0] = el; }}
               className={`border-2 border-black inset-border p-6 transition-opacity duration-700 ease-in-out ${visibleSteps.has(0) ? 'opacity-100' : 'opacity-0'}`}
             >
@@ -129,31 +129,31 @@ export default function Home() {
             <div className="flex justify-center my-2">
               <TbSTurnDown className="text-4xl text-black" />
             </div>
-            <div 
+            <div
               ref={(el) => { stepRefs.current[1] = el; }}
               className={`border-2 border-black inset-border p-6 transition-opacity duration-700 ease-in-out ${visibleSteps.has(1) ? 'opacity-100' : 'opacity-0'}`}
             >
               <h3 className="text-h3 font-semibold font-space-mono mb-2">Step 2: Data Exploration, Determine KPIs, Metrics, Actions, Deliverables and Outcomes</h3>
               <p className="text-body">
-                We sit down and have a chat about what success means for you. Be prepared, I will have lots of questions. 
+                We sit down and have a chat about what success means for you. Be prepared, I will have lots of questions.
               </p>
             </div>
             <div className="flex justify-center my-2">
               <TbSTurnDown className="text-4xl text-black" />
             </div>
-            <div 
+            <div
               ref={(el) => { stepRefs.current[2] = el; }}
               className={`border-2 border-black inset-border p-6 transition-opacity duration-700 ease-in-out ${visibleSteps.has(2) ? 'opacity-100' : 'opacity-0'}`}
             >
               <h3 className="text-h3 font-semibold font-space-mono mb-2">Step 3: Implementation, Improvements, Tracking</h3>
               <p className="text-body">
-                I build the Systems, Models, Dashboards and Reports you need. Let the data tell us where you're at, where you want to be, and how to get there. 
+                I build the Systems, Models, Dashboards and Reports you need. Let the data tell us where you're at, where you want to be, and how to get there.
               </p>
             </div>
             <div className="flex justify-center my-2">
               <TbSTurnDown className="text-4xl text-black" />
             </div>
-            <div 
+            <div
               ref={(el) => { stepRefs.current[3] = el; }}
               className={`border-2 border-black inset-border p-6 transition-opacity duration-700 ease-in-out ${visibleSteps.has(3) ? 'opacity-100' : 'opacity-0'}`}
             >
@@ -165,7 +165,7 @@ export default function Home() {
             <div className="flex justify-center my-2">
               <TbSTurnDown className="text-4xl text-black" />
             </div>
-            <div 
+            <div
               ref={(el) => { stepRefs.current[4] = el; }}
               className={`border-2 border-black inset-border bg-gray-300 p-6 transition-opacity duration-700 ease-in-out ${visibleSteps.has(4) ? 'opacity-100' : 'opacity-0'}`}
             >
@@ -178,7 +178,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="tech-stack" className="border-x border-black text-white bg-slate-600-transparent">
+      <section id="tech-stack" className="border-x border-black text-white bg-radial from-slate-600-transparent to-slate-950">
         <div className="flex flex-col">
           <h2 className="text-h2 font-semibold font-space-mono px-2 border-b">My Arsenal</h2>
           <div className="flex flex-col lg:flex-row min-h-[40vh] px-4">
@@ -197,9 +197,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* <section id="testimonials" className="py-20 border-t border-l border-r border-black  bg-background">
-        
-      </section> */}
+      <section id="about" className="border-x bg-background">
+        <div className="flex flex-col">
+          <h2 className="text-h2 font-semibold font-space-mono px-2 border-b">
+            My Story
+          </h2>
+          <div className="p-6 bg-background">
+            <p className="text-h3 border-b mb-4">
+              Emerging Data Scientist with a background in Energy Software Development and BSc Physics from the University of Kent.
+            </p>
+            <p className="text-body">
+              I believe in the power of data to empower even the smallest businesses to build success in our communities from the ground up.
+              Just like equations in Physics describe the world, Data Science holds the equations needed to drive commerce forward.
+            </p>
+          </div>
+        </div>
+      </section>
 
       <section id="projects" className="border-x border-black bg-background">
         <div className="flex flex-col">
@@ -218,19 +231,19 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contact" className="border-x border-black bg-background">
+      <section id="contact" className="border-x border-black">
         <div className="flex flex-col">
-          <h2 className="text-h2 font-semibold font-space-mono px-2 border-b">
+          <h2 className="text-h2 font-semibold font-space-mono px-2 border-y bg-background">
             Get in touch
           </h2>
-          <div className="p-6">
+          <div className="p-6 ">
             <p className="text-body mb-6">
               Interested in exploring how data analytics can help your business? Whether you're a <strong className="font-semibold">Sole Trader</strong>, <strong className="font-semibold">Local Business</strong>, or planning to <strong className="font-semibold">Scale Up</strong>, I'm excited to see what we can build together.
             </p>
             <div className="border border-black p-8 bg-slate-600-transparent">
               <ContactForm />
             </div>
-            <div className="border border-black p-6 mt-6">
+            <div className="border border-black p-6 mt-6 bg-background">
               <p className="text-body">
                 <strong>Email:</strong> jordanthij@gmail.com
               </p>
