@@ -2,8 +2,10 @@
 import type { Metadata } from "next";
 import { Space_Mono, Titillium_Web, Science_Gothic } from "next/font/google";
 import "./globals.css";
+import "leaflet/dist/leaflet.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import FaroInit from "@/components/FaroInit";
 
 const spaceMono = Space_Mono({
   variable: "--font-space-mono",
@@ -39,6 +41,7 @@ export default function RootLayout({
       <body
         className={`${spaceMono.variable} ${titilliumWeb.variable} ${scienceGothic.variable} antialiased min-h-screen bg-[#F7F6F2]`}
       >
+        <FaroInit/>
         <Header />
         {children}
         <Footer />

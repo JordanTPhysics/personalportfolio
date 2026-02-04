@@ -100,3 +100,11 @@ section[id] {
 .cursor {
   animation: blink 1s infinite;
 }
+
+/* Remove Leaflet default marker/div-icon box (white background, border) */
+.leaflet-div-icon,
+.leaflet-marker-icon {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}

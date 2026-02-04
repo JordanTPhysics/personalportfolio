@@ -52,7 +52,7 @@ export default function Home() {
   return (
     <main className="mx-auto lg:max-w-[80vw] w-[90vw]  text-black">
       <section id="about" className="border-l border-r border-black ">
-        <div className="lg:grid lg:grid-cols-5 lg:grid-rows-2 grid-cols-1 grid-rows-2 text-white bg-slate-600-transparent">
+        <div className="lg:grid lg:grid-cols-5 lg:grid-rows-2 grid-cols-1 grid-rows-2 text-white bg-radial from-slate-600-transparent to-slate-950">
           <h2 className="text-h2 bg-background text-black min-h-20 font-semibold tracking-tight text-accent-blue col-span-4 row-span-1 border-b px-2">
             Hi, I'm Jordan Thijssen, your <br /> <TypeWriterText texts={roles} />
           </h2>
@@ -215,17 +215,27 @@ export default function Home() {
       </section>
 
       <section id="projects" className="border-x border-black bg-background">
-        <div className="flex flex-col">
-          <h2 className="text-h2 font-semibold font-space-mono px-2 border-b">
-            My Projects
-          </h2>
-          <div className="grid gap-8 p-6 md:grid-cols-2 lg:grid-cols-3">
+        <h2 className="text-h2 font-semibold font-space-mono px-2 border-b">
+          My Projects
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-stretch">
+          <div className="p-4 h-full flex">
             <ProjectCard
               title="MarketMinder"
               description="30 second evaluations for local businesses for buyers, owners and prospectors using location data and demographics"
               imageSrc="/images/mmlogo.png"
               imageAlt="MarketMinder"
+              imageSize={256}
               link="https://www.marketminder.co.uk"
+            />
+          </div>
+          <div className="p-4 h-full flex">
+            <ProjectCard
+              title="Geothermal & Volcano Dashboard"
+              description="Geothermal Activity and Volcano Dashboard for identifying new renewable opportunities"
+              imageSrc="/images/geothermal.jpg"
+              imageAlt="Geothermal & Volcano Dashboard"
+              link="/geothermal"
             />
           </div>
         </div>

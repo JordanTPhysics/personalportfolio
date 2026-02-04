@@ -7,6 +7,7 @@ interface ProjectCardProps {
   imageSrc: string;
   imageAlt: string;
   link: string;
+  imageSize?: number;
 }
 
 export default function ProjectCard({
@@ -15,24 +16,25 @@ export default function ProjectCard({
   imageSrc,
   imageAlt,
   link,
+  imageSize = 400,
 }: ProjectCardProps) {
   return (
-    <div className="border border-black inset-border duration-300 ease-in-out hover:bg-blue-500 hover:text-white">
-      <Link href={link} target="_blank" rel="noopener noreferrer" className="block">
-        <div className="flex flex-col">
-          <div className="border-b border-black p-6 flex justify-center items-center bg-slate-600-transparent">
+    <div className="border border-black inset-border duration-300 ease-in-out hover:bg-blue-500 hover:text-white h-full flex flex-col">
+      <Link href={link} target="_blank" rel="noopener noreferrer" className="h-full flex flex-col min-h-0">
+        <div className="flex flex-col flex-1 min-h-0">
+          <div className="border-b border-black flex justify-center items-center bg-slate-600-transparent shrink-0">
             <Image
               src={imageSrc}
               alt={imageAlt}
-              width={300}
-              height={300}
-              className="object-contain max-h-[200px] w-auto"
+              width={imageSize}
+              height={imageSize}
+              className="object-contain w-auto"
             />
           </div>
-          <div className="p-6">
-            <h3 className="text-h3 font-semibold font-space-mono mb-2">{title}</h3>
+          <div className="p-6 flex-1 min-h-0 flex flex-col">
+            <h3 className="text-h3 font-semibold font-space-mono mb-2 shrink-0">{title}</h3>
             {description && (
-              <p className="text-body">{description}</p>
+              <p className="text-body text-bottom flex-1 min-h-0">{description}</p>
             )}
           </div>
         </div>
