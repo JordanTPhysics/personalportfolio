@@ -1,6 +1,5 @@
 "use client";
 
-
 import Image from "next/image";
 
 import TypeWriterText from "@/components/TypeWriterText";
@@ -221,12 +220,12 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-stretch">
           <div className="p-4 h-full flex">
             <ProjectCard
-              title="MarketMinder"
-              description="30 second evaluations for local businesses for buyers, owners and prospectors using location data and demographics"
-              imageSrc="/images/mmlogo.png"
-              imageAlt="MarketMinder"
-              imageSize={256}
-              link="https://www.marketminder.co.uk"
+              title="Ecommerce Data Exploration"
+              description="Explore how a single CSV of invoices for an online retailer fountains into endless valuable insights with a few simple data analysis tools in Python"
+              imageSrc="/images/ecommerce.png"
+              imageAlt="Ecommerce Data Exploration"
+              imageSize={512}
+              link="https://ecommerce-eda.streamlit.app/"
             />
           </div>
           <div className="p-4 h-full flex">
@@ -235,9 +234,21 @@ export default function Home() {
               description="Geothermal Activity and Volcano Dashboard for identifying new renewable opportunities"
               imageSrc="/images/geothermal.jpg"
               imageAlt="Geothermal & Volcano Dashboard"
+              imageSize={512}
               link="/geothermal"
             />
           </div>
+          <div className="p-4 h-full flex">
+            <ProjectCard
+              title="MarketMinder"
+              description="30 second evaluations for local businesses for buyers, owners and prospectors using location data and demographics"
+              imageSrc="/images/mmlogo.png"
+              imageAlt="MarketMinder"
+              imageSize={225}
+              link="https://www.marketminder.co.uk"
+            />
+          </div>
+
         </div>
       </section>
 
