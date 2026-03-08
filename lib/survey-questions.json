@@ -1,0 +1,214 @@
+[
+  {
+    "id": 1,
+    "question": "What is your company name?",
+    "category": "company-name",
+    "type": "text",
+    "options": [],
+    "required": true
+  },
+  {
+    "id": 2,
+    "question": "How many employees does your company have?",
+    "category": "size",
+    "type": "radio",
+    "options": ["1-9", "10-49", "50-249", "250-999", "1000+", "I don't know", "Prefer not to say"],
+    "required": true
+  },
+  {
+    "id": 3,
+    "question": "Describe your primary business sector or industry.",
+    "category": "sector",
+    "type": "text",
+    "options": [],
+    "required": true
+  },
+  {
+    "id": 4,
+    "question": "Does your business collect digital data? (Orders, receipts, reviews, website visits, etc.)",
+    "category": "data-collection",
+    "type": "radio",
+    "options": ["Yes", "No", "I don't know", "Prefer not to say"],
+    "required": true,
+    "tooltip": "More than 3/4 of all UK businesses collect data",
+    "link": "https://www.gov.uk/government/statistics/uk-business-data-survey-2024/uk-business-data-survey-2024",
+    "source": "Uk Business Data Survey"
+  },
+  {
+    "id": 5,  
+    "question": "Do you use collected data to improve business operations?",
+    "category": "decision-making",
+    "type": "radio",
+    "options": ["Yes", "No", "I don't know", "Prefer not to say"],
+    "required": false,
+    "tooltip": "A business' transaction/order history, website, social media, online reviews and customer feedback are all potential data sources waiting to be mined for insights."
+  },
+  {
+    "id": 6,
+    "question": "If yes, how do you use data?",
+    "category": "decision-making-methods",
+    "type": "text",
+    "options": [],
+    "required": false
+  },
+  {
+    "id": 7,
+    "question": "If not, what is preventing you from using collected data for decision-making? (Select all that apply)",
+    "category": "decision-making-challenges",
+    "type": "checkbox",
+    "options": ["Lack of resource", "Lack of time", "Lack of knowledge", "Lack of data", "Not valuable enough", "Other"],
+    "required": false
+  },
+  {
+    "id": 8,
+    "question": "Is your business interested in using data to drive decision making?",
+    "category": "decision-making-interest",
+    "type": "radio",
+    "options": ["Yes", "No", "If it can create value", "Prefer not to say"],
+    "required": true
+  },
+  {
+    "id": 9,
+    "question": "What are your main sources of new prospects? (Select all that apply)",
+    "category": "prospects-sources",
+    "type": "checkbox",
+    "options": ["Internet Ads (Google, Facebook, Youtube)","Website/Funnel", "Referrals", "Traditional Advertising (Newspaper, Radio, TV)", "Events (Trade Shows, Conferences, etc.)", "Word of Mouth", "Other"],
+    "required": true
+  },
+  {
+      "id": 10,
+    "question": "Do you know what your main source of revenue/new business is?",
+    "category": "prospects-main-source",
+    "type": "text",
+    "options": [],
+    "required": false
+  },
+  {
+    "id": 11,
+    "question": "How do customers place orders and/or pay for services? (Select all that apply)",
+    "category": "order-placement",
+    "type": "checkbox",
+    "options": ["Website", "Phone", "Email", "In Person", "Other"],
+    "required": true
+  },
+  {
+    "id": 12,
+    "question": "As a percentage of maximum capacity, how busy are your business resources currently?",
+    "category": "resources",
+    "type": "radio",
+    "options": ["0-24%", "25-49%", "50-74%", "75-99%", "Full Capacity", "I don't know", "Prefer not to say"],
+    "required": true
+  },
+  {
+    "id": 13,
+    "question": "Does your business have a website?",
+    "category": "website",
+    "type": "radio",
+    "options": ["Yes", "No", "I don't know", "Prefer not to say"],
+    "required": true
+  },
+  {
+    "id": 14,
+    "question": "How many visitors does your website/funnel get per month?",
+    "category": "website-traffic",
+    "type": "radio",
+    "options": ["Less than 100", "100-500", "500-1000", "1000-5000", "More than 5000", "I don't know", "Prefer not to say"],
+    "required": false
+  },
+  {
+    "id": 15,
+    "question": "Do you measure the success rates of your websites/funnels/marketing/ad campaigns?",
+    "category": "success-rates",
+    "type": "radio",
+    "options": ["Yes", "No", "I don't know", "Prefer not to say"],
+    "required": true
+  },
+  {
+    "id": 16,
+    "question": "Do you measure other conversion success rates in your business? (For example in person sale vs. 'just looking' sales)",
+    "category": "conversion-success-rates",
+    "type": "radio",
+    "options": ["Yes", "No", "I don't know", "Prefer not to say"],
+    "required": true
+  },
+  {
+    "id": 17,
+    "question": "Do you measure the success rates of your websites/funnels/marketing/ad campaigns?",
+    "category": "success-rates",
+    "type": "radio",
+    "options": ["Yes", "No", "I don't know", "Prefer not to say"],
+    "required": true
+  },
+  {
+    "id": 18,
+    "question": "Does someone in the business check/process customer feedback? (Google, Website, TrustPilot, Facebook comments/reviews, etc.)",
+    "category": "customer-feedback",
+    "type": "radio",
+    "options": ["Yes", "No", "I don't know", "Prefer not to say"],
+    "required": true
+  },
+  {
+    "id": 19,
+    "question": "Is customer feedback used to make operational decisions?",
+    "category": "customer-feedback-decisions",
+    "type": "radio",
+    "options": ["Yes", "No", "I don't know", "Prefer not to say"],
+    "required": true
+  },
+  {
+    "id": 20,
+    "question": "Does your business plan strategy in advance?",
+    "category": "strategy-planning",
+    "type": "radio",
+    "options": ["No Planning", "1 Month", "3 Months", "6 Months", "1 Year+", "I don't know", "Prefer not to say"],
+    "required": true
+  },
+  {
+    "id": 21,
+    "question": "Does your business use any software for daily operations?",
+    "category": "software-usage",
+    "type": "text",
+    "options": [],
+    "required": true
+  },
+  {
+    "id": 22,
+    "question": "Is logistics and procurement an essential part of your business operations? (e.g. supermarket ordering enough food to meet demand while minimizing waste)",
+    "category": "logistics-procurement",
+    "type": "radio",
+    "options": ["Yes", "No", "I don't know", "Prefer not to say"],
+    "required": true
+  },
+  {
+    "id": 23,
+    "question": "Did you know that most commonly collected data in businesses can easily be used to solve and optimize ALL of the challenges and operations described in this survey?",
+    "category": "data-leverage",
+    "type": "radio",
+    "options": ["Yes", "No", "I don't know", "Prefer not to say"],
+    "required": true
+  },
+  {
+    "id": 24,
+    "question": "Before taking the survey, how likely were you to implement a data driven approach to business?",
+    "category": "data-driven-approach",
+    "type": "range",
+    "options": ["1", "10"],
+    "required": true
+  },
+  {
+    "id": 25,
+    "question": "And after, now how likely are you to implement a data driven approach?",
+    "category": "data-driven-approach",
+    "type": "range",
+    "options": ["1", "10"],
+    "required": true
+  },
+  {
+    "id": 26,
+    "question": "Final comments and thoughts",
+    "category": "final-comments",
+    "type": "text",
+    "options": [],
+    "required": false
+  }
+]

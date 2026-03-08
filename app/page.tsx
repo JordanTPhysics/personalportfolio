@@ -207,7 +207,7 @@ export default function Home() {
             </p>
             <p className="text-body">
               I believe in the power of data to empower even the smallest businesses to build success in our communities from the ground up.
-              Just like equations in Physics describe the world, Data Science holds the equations needed to drive commerce forward.
+              Physical Science tells us the laws of the universe, Data Science tells us the laws of business.
             </p>
           </div>
         </div>
