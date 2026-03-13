@@ -11,13 +11,13 @@ export async function POST(req: Request) {
     port: 465,
     secure: true,
     auth: {
-      user: process.env.SMTP_USER,
+      user: process.env.NEXT_PUBLIC_SMTP_USER,
       pass: process.env.SMTP_PASS,
     },
   });
 
   await transporter.sendMail({
-    from: process.env.SMTP_USER,
+    from: process.env.NEXT_PUBLIC_SMTP_USER,
     to: email,
     subject: "FOUR Steps to Data Driven Outcomes",
     text: "Thanks for completing the survey. Please find the free Ebook attached.",

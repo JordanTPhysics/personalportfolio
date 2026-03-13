@@ -115,7 +115,7 @@ export default function SurveyPage() {
           Complete the survey to see the data-readiness of your business AND receive a free Ebook: "FOUR Steps to Data Driven Outcomes"
         </span>
 
-        <Button onClick={debugAnswerAll} variant="default" className="rounded-md hover:text-white h-full">Debug: Answer All</Button>
+        {/* <Button onClick={debugAnswerAll} variant="default" className="rounded-md hover:text-white h-full">Debug: Answer All</Button> */}
 
         <div className="flex flex-col">
           {questions.map((question) => (
@@ -131,9 +131,7 @@ export default function SurveyPage() {
         <h3 className="text-h3 text-center mb-2">
           Thanks for taking the SME Data Survey! The results and free Ebook will be sent to your email.
         </h3>
-        {submitError && (
-          <p className="text-body text-accent-red font-space-mono mb-2">{submitError}</p>
-        )}
+
         <div className="flex justify-evenly text-h4">
           <input
             type="email"
@@ -144,6 +142,9 @@ export default function SurveyPage() {
           />
           <Button onClick={handleSubmit} variant="default" className="rounded-md hover:text-white h-full">Submit</Button>
         </div>
+        {submitError && (
+          <p className="text-h4 text-red-500 font-space-mono m-2 flex justify-center bg-background p-4 border border-black rounded-md">{submitError}</p>
+        )}
       </div>
     </main>
   );
