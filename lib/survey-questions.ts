@@ -6,7 +6,7 @@ export const SURVEY_QUESTIONS: QuestionModel[] = questionsJson.map(
   (q: {
     id: number;
     question: string;
-    category: string;
+    name: string;
     type: string;
     options: string[];
     required: boolean;
@@ -17,7 +17,7 @@ export const SURVEY_QUESTIONS: QuestionModel[] = questionsJson.map(
     new QuestionModel(
       q.id,
       q.question,
-      q.category,
+      q.name,
       q.type,
       q.options,
       q.required,

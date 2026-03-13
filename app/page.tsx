@@ -120,9 +120,10 @@ export default function Home() {
               ref={(el) => { stepRefs.current[0] = el; }}
               className={`border-2 border-black inset-border p-6 transition-opacity duration-700 ease-in-out ${visibleSteps.has(0) ? 'opacity-100' : 'opacity-0'}`}
             >
-              <h3 className="text-h3 font-semibold font-space-mono mb-2">Step 1: Setup Data Collection, Pipelines and Tracking</h3>
+              <h3 className="text-h3 font-semibold font-space-mono mb-2">1. Data Discovery - Tying Questions and Strategy to Data</h3>
               <p className="text-body">
-                Extract, Transform and Load (ETL) is the first and most important step. I'll collect and store your order history, track clicks on your website and sales funnels, and scrape the web for customer feedback.
+                A consultation for me to align with you on what measurable success means for your business. What questions can we ask the data to gain insights into customer spending, cost saving and more?
+                From there we can decide which data sources I need to answer the questions, and set desired KPIs, Actions, Deliverables and Outcomes.
               </p>
             </div>
             <div className="flex justify-center my-2">
@@ -132,9 +133,9 @@ export default function Home() {
               ref={(el) => { stepRefs.current[1] = el; }}
               className={`border-2 border-black inset-border p-6 transition-opacity duration-700 ease-in-out ${visibleSteps.has(1) ? 'opacity-100' : 'opacity-0'}`}
             >
-              <h3 className="text-h3 font-semibold font-space-mono mb-2">Step 2: Data Exploration, Determine KPIs, Metrics, Actions, Deliverables and Outcomes</h3>
+              <h3 className="text-h3 font-semibold font-space-mono mb-2">2. Data Collection - Building the ETL Pipeline</h3>
               <p className="text-body">
-                We sit down and have a chat about what success means for you. Be prepared, I will have lots of questions.
+                I will build the systems, models, dashboards and reports you need, outlining any domain specific questions and access requests to avoid delays. With exploratory data analysis and hypothesis testing, we can build the best set of solutions for your business.
               </p>
             </div>
             <div className="flex justify-center my-2">
@@ -144,9 +145,9 @@ export default function Home() {
               ref={(el) => { stepRefs.current[2] = el; }}
               className={`border-2 border-black inset-border p-6 transition-opacity duration-700 ease-in-out ${visibleSteps.has(2) ? 'opacity-100' : 'opacity-0'}`}
             >
-              <h3 className="text-h3 font-semibold font-space-mono mb-2">Step 3: Implementation, Improvements, Tracking</h3>
+              <h3 className="text-h3 font-semibold font-space-mono mb-2">3. Field Testing - Questions <span className="font-titillium-web">{'=>'}</span> Answers and Actions <span className="font-titillium-web">{'=>'}</span> Outcomes</h3>
               <p className="text-body">
-                I build the Systems, Models, Dashboards and Reports you need. Let the data tell us where you're at, where you want to be, and how to get there.
+                You implement operational changes based on the answers, and we use the data to track success. Regular check-ins and a live dashboard will keep you fully up to date with progress and KPIs.
               </p>
             </div>
             <div className="flex justify-center my-2">
@@ -156,12 +157,12 @@ export default function Home() {
               ref={(el) => { stepRefs.current[3] = el; }}
               className={`border-2 border-black inset-border p-6 transition-opacity duration-700 ease-in-out ${visibleSteps.has(3) ? 'opacity-100' : 'opacity-0'}`}
             >
-              <h3 className="text-h3 font-semibold font-space-mono mb-2">Step 4: Feedback Results to Determine Success</h3>
+              <h3 className="text-h3 font-semibold font-space-mono mb-2">4. Iterate and Improve - Developing Deeper Understanding</h3>
               <p className="text-body">
-                Regular check-ins using the systems I've built to see the progress towards KPIs and if the desired outcomes are being achieved.
+                As your business and its needs evolve, and as we gain more insights from your data, we can target and track more specific niches to new levels of success and customer satisfaction.
               </p>
             </div>
-            <div className="flex justify-center my-2">
+            {/* <div className="flex justify-center my-2">
               <TbSTurnDown className="text-4xl text-black" />
             </div>
             <div
@@ -172,7 +173,7 @@ export default function Home() {
               <p className="text-body">
                 Iterate over steps 3 and 4 to keep improving, Double Down on Big Wins. If anything isn't working, I'll find out why. Occasionally, we may add more KPIs and data collection as your business evolves.
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
@@ -266,7 +267,7 @@ export default function Home() {
             </div>
             <div className="border border-black p-6 mt-6 bg-background">
               <p className="text-body">
-                <strong>Email:</strong> jordanthij@gmail.com
+                <strong>Email:</strong> live@datadrivenscience.co.uk
               </p>
               <p className="text-body">
                 <strong>Initial consultation:</strong> Free, no obligation

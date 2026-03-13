@@ -4,6 +4,8 @@ import { useState } from "react";
 import Question from "@/components/ui/Question";
 import { SURVEY_QUESTIONS } from "@/lib/survey-questions";
 import { Button } from "@/components/ui/Button";
+import { QuestionModel } from "@/lib/QuestionModel";
+import { useRouter } from "next/navigation";
 
 function generateSessionId(): string {
   if (typeof crypto !== "undefined" && crypto.randomUUID) {
@@ -13,22 +15,33 @@ function generateSessionId(): string {
 }
 
 export default function SurveyPage() {
+  const router = useRouter();
   const [sessionId] = useState(() => generateSessionId());
-  const [answers, setAnswers] = useState<Record<number, string[]>>({});
-  const [extraByQuestion, setExtraByQuestion] = useState<Record<number, string>>({});
+  const [questions, setQuestions] = useState<QuestionModel[]>(SURVEY_QUESTIONS);
   const [email, setEmail] = useState<string>("");
   const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const handleAnswerChange = (questionId: number, value: string[]) => {
-    setAnswers((prev) => ({ ...prev, [questionId]: value }));
+  const handleAnswerChange = (questionId: number, value: string[], extra: string) => {
+    setQuestions((prev) => prev.map((q) => q.id === questionId ? { ...q, answers: value, extra: extra } : q));
   };
 
-  const handleExtraChange = (questionId: number, text: string) => {
-    setExtraByQuestion((prev) => ({ ...prev, [questionId]: text }));
-  };
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
+  };
+
+  const debugAnswerAll = () => {
+    for (const question of SURVEY_QUESTIONS) {
+      if (question.type === "radio") {
+        setQuestions((prev) => prev.map((q) => q.id === question.id ? { ...q, answers: [question.options[question.id % 3]] } : q));
+      } else if (question.type === "checkbox") {
+        setQuestions((prev) => prev.map((q) => q.id === question.id ? { ...q, answers: question.options, extra: "Extra text" } : q));
+      } else if (question.type === "range") {
+        setQuestions((prev) => prev.map((q) => q.id === question.id ? { ...q, answers: ["5"] } : q));
+      } else if (question.type === "text") {
+        setQuestions((prev) => prev.map((q) => q.id === question.id ? { ...q, answers: [question.name + " test"] } : q));
+      }
+    }
   };
 
   const validateEmail = (email: string) => {
@@ -47,21 +60,18 @@ export default function SurveyPage() {
       return;
     }
 
+    localStorage.setItem("email", trimmedEmail);
+
     const payload = {
       sessionId,
       email: trimmedEmail,
-      answers: SURVEY_QUESTIONS.map((q) => ({
+      answers: questions.map((q) => ({
         questionId: q.id,
-        category: q.category,
+        name: q.name,
         question: q.question,
-        value: answers[q.id] ?? [],
+        extra: q.extra ?? "",
+        value: q.answers ?? [],
       })),
-      extraAnswers: Object.entries(extraByQuestion)
-        .filter(([, text]) => text?.trim())
-        .reduce<Record<number, string>>((acc, [questionId, text]) => {
-          acc[Number(questionId)] = text.trim();
-          return acc;
-        }, {}),
       metadata: {
         submittedAt: new Date().toISOString(),
         userAgent: typeof navigator !== "undefined" ? navigator.userAgent : undefined,
@@ -70,9 +80,28 @@ export default function SurveyPage() {
       },
     };
 
-    const json = JSON.stringify(payload, null, 2);
-    console.log("Survey submission:", json);
-    // TODO: send to API (e.g. fetch("/api/survey", { method: "POST", headers: { "Content-Type": "application/json" }, body: json }))
+
+    fetch("/api/saveSurvey", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error("Failed to save survey");
+        return response.json();
+      })
+      .then(() => {
+        if (typeof window !== "undefined") {
+          sessionStorage.setItem("surveyJustSubmitted", "1");
+        }
+        router.push("/survey/success");
+      })
+      .catch((error) => {
+        console.error(error);
+        setSubmitError("Something went wrong. Please try again.");
+      });
   };
 
   return (
@@ -83,18 +112,18 @@ export default function SurveyPage() {
         </h1>
 
         <span className="text-h4 text-center mx-8 flex justify-center bg-slate-300 rounded-md p-4 border-2 border-black">
-          Complete the survey to see the data-readiness of your business AND receive a free Ebook: "First Steps to Data Driven OUTCOMES"
+          Complete the survey to see the data-readiness of your business AND receive a free Ebook: "FOUR Steps to Data Driven Outcomes"
         </span>
 
+        <Button onClick={debugAnswerAll} variant="default" className="rounded-md hover:text-white h-full">Debug: Answer All</Button>
+
         <div className="flex flex-col">
-          {SURVEY_QUESTIONS.map((question) => (
+          {questions.map((question) => (
             <Question
               key={question.id}
               question={question}
-              value={answers[question.id] ?? []}
-              onChange={(value) => handleAnswerChange(question.id, value)}
-              extraValue={extraByQuestion[question.id] ?? ""}
-              onExtraChange={(text) => handleExtraChange(question.id, text)}
+              value={question.answers}
+              onChange={(value, extra) => handleAnswerChange(question.id, value, extra)}
             />
           ))}
         </div>
