@@ -5,7 +5,7 @@ import "./globals.css";
 import "leaflet/dist/leaflet.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import FaroInit from "@/components/FaroInit";
+// import FaroInit from "@/components/FaroInit";
 import Script from "next/script";
 
 const spaceMono = Space_Mono({
@@ -103,7 +103,7 @@ export default function RootLayout({
       <body
         className={`${spaceMono.variable} ${titilliumWeb.variable} ${scienceGothic.variable} antialiased min-h-screen bg-[#F7F6F2]`}
       >
-        <FaroInit/>
+        {/* <FaroInit/> */}
         <Header />
         {children}
         <Footer />

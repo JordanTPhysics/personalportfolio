@@ -6,10 +6,11 @@ import TypeWriterText from "@/components/TypeWriterText";
 import { useState, useRef, useEffect } from "react";
 import Carousel3D from "@/components/Carousel3D";
 import { useMediaQuery } from "@/app/hooks/use-media-query";
-import techStackData from "@/components/carousel-data";
+import { techStackData, arsenalData } from "@/components/carousel-data";
 import { TbSTurnDown } from "react-icons/tb";
 import ProjectCard from "@/components/ProjectCard";
 import ContactForm from "@/components/ContactForm";
+import { Switch } from "@/components/ui/switch";
 
 const roles = [" Data Scientist", " Business Partner", " Full Stack Developer", ' "Numbers Guy"'];
 const products = ['Pricing Models', 'Data Pipelines', 'Feedback Studies', 'Behaviour Models', 'Demand Forecasts']
@@ -18,6 +19,7 @@ const products = ['Pricing Models', 'Data Pipelines', 'Feedback Studies', 'Behav
 export default function Home() {
 
   const [activeTechIndex, setActiveTechIndex] = useState<number>(0);
+  const [skillsShown, setSkillsShown] = useState<"Arsenal" | "Tech Stack">("Arsenal");
   const [visibleSteps, setVisibleSteps] = useState<Set<number>>(new Set());
   const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -77,7 +79,7 @@ export default function Home() {
       <section id="mission" className="border-x border-black bg-background">
         <div className="flex flex-col">
           <div className="flex flex-row">
-            <div className="border-2 w-2/3 border-black bg-linear-to-br from-orange-500 to-white inset-border lg:p-8 p-2 duration-200 ease-in-out hover:from-white hover:to-orange-500">
+            <div className="border-r-2 w-2/3 border-black bg-linear-to-br from-orange-500 to-white inset-border lg:p-8 p-2 duration-200 ease-in-out hover:from-white hover:to-orange-500">
               <h2 className="text-h2 font-semibold font-space-mono">Make Money</h2>
               <p className="text-body lg:w-1/2">
                 Identify your most profitable products, services, and customers. Optimize pricing strategies based on real demand patterns.
@@ -87,11 +89,11 @@ export default function Home() {
               <Image src="/images/gold.jpg" alt="Gold" width={500} height={500} />
             </div>
           </div>
-          <div className="flex flex-row">
+          <div className="flex flex-row border-t-2">
             <div className="w-1/3">
               <Image src="/images/savings.jpg" alt="Savings" width={500} height={500} />
             </div>
-            <div className="text-right border-x-2 border-black bg-linear-to-tl from-blue-500 to-white inset-border lg:p-8 duration-200 ease-in-out hover:bg-linear-to-br w-3/4">
+            <div className="text-right border-l-2 border-black bg-linear-to-tl from-blue-500 to-white inset-border lg:p-8 duration-200 ease-in-out hover:bg-linear-to-br w-3/4">
               <h2 className="text-h2 font-semibold font-space-mono">Save Money</h2>
               <p className="text-body wrap-reverse">
                 Find inefficiencies in operations, reduce waste, and cut unnecessary costs. Make informed decisions about where to invest.
@@ -99,7 +101,7 @@ export default function Home() {
             </div>
           </div>
           <div className="flex flex-row">
-            <div className="border-2 w-4/5 border-black bg-linear-to-bl from-green-500 to-white inset-border lg:p-8 p-2 duration-200 ease-in-out hover:from-white hover:to-green-500">
+            <div className="border-y-2 border-r-2 w-4/5 border-black bg-linear-to-bl from-green-500 to-white inset-border lg:p-8 p-2 duration-200 ease-in-out hover:from-white hover:to-green-500">
               <h2 className="text-h2 font-semibold font-space-mono">Understand Customers</h2>
               <p className="text-body lg:w-1/2">
                 Segment your customer base. Predict churn. Understand what drives satisfaction and loyalty.
@@ -180,21 +182,26 @@ export default function Home() {
 
       <section id="tech-stack" className="border-x border-black text-white bg-radial from-slate-600-transparent to-slate-950">
         <div className="flex flex-col">
-          <h2 className="text-h2 font-semibold font-space-mono px-2 border-b">My Arsenal</h2>
+          <h2 className="text-h2 font-semibold font-space-mono px-2 border-b">My {skillsShown}</h2>
           <div className="flex flex-col lg:flex-row min-h-[40vh] px-4">
             <div className="flex-1 flex justify-center items-center">
-              <Carousel3D onActiveIndexChange={setActiveTechIndex} />
+              <Carousel3D key={skillsShown} onActiveIndexChange={setActiveTechIndex} data={skillsShown === "Arsenal" ? arsenalData : techStackData} />
             </div>
             <div className="flex-1 flex flex-col inset-border">
-              {techStackData[activeTechIndex] && (
+              {(skillsShown === "Arsenal" ? arsenalData : techStackData)[activeTechIndex] && (
                 <>
-                  <h3 className="text-h2 font-semibold mb-4">{techStackData[activeTechIndex].title}</h3>
-                  <p className="text-body">{techStackData[activeTechIndex].desc}</p>
+                  <h3 className="text-h2 font-semibold mb-4">{(skillsShown === "Arsenal" ? arsenalData : techStackData)[activeTechIndex].title}</h3>
+                  <p className="text-body">{(skillsShown === "Arsenal" ? arsenalData : techStackData)[activeTechIndex].desc}</p>
                 </>
               )}
             </div>
           </div>
         </div>
+        <div className="flex justify-between p-2">
+          <Switch size="lg" checked={skillsShown === "Arsenal"} onCheckedChange={() => setSkillsShown(skillsShown === "Arsenal" ? "Tech Stack" : "Arsenal")}>{skillsShown === "Arsenal" ? "Arsenal" : "Tech Stack"}</Switch>
+          <span className="text-h4">Showing: {skillsShown}</span>
+        </div>
+
       </section>
 
       <section id="about" className="border-x bg-background">

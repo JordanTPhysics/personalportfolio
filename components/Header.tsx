@@ -6,25 +6,28 @@ import { useMediaQuery } from "@/app/hooks/use-media-query";
 import Link from "next/link";
 
 export default function Header() {
-    const isMobile = useMediaQuery("(max-width: 768px)");
-    const isHome = usePathname() === "/";
+  const isMobile = useMediaQuery("(max-width: 768px)");
+  const p = usePathname();
 
-    return (
-        <header className="sticky top-0 z-10 border-b border-black bg-[#F7F6F2]">
-        <div className="border-l border-r border-black px-6 w-screen">
-          <div className="grid grid-cols-1 sm:grid-cols-2">
-            <div>
-              <Link href="/" className="hover:underline"><h1 className="text-2xl font-semibold tracking-tight font-space-mono">Data Driven Outcomes</h1></Link>
-              <p className="text-sm text-gray-700 font-space-mono">BIG Data for small businesses</p>
-            </div>
-            <nav className="grid grid-cols-4 text-sm sm:justify-self-end font-space-mono">
-              <Link href={isHome ? "#contact" : "/#contact"} className="bg-linear-to-br from-indigo-500 to-purple-500 hover:from-purple-500 hover:to-white hover:text-black duration-200 ease-in-out text-center text-white px-2">{isMobile ? "Contact" : "Get in Touch"}</Link>
-              <Link href={isHome ? "#strategy" : "/#strategy"} className="hover:bg-blue-500 duration-200 ease-in-out text-center px-2">Strategy</Link>
-              <Link href="/blog" className="hover:bg-green-500 duration-200 ease-in-out text-center px-2">Blog</Link>
-              <Link href="/survey" className="hover:bg-orange-500 duration-200 ease-in-out text-center px-2">{isMobile ? "Survey" : "SMED Survey"}</Link>
-            </nav>
+  return (
+    <header className="sticky top-0 z-10 border-b border-black bg-[#F7F6F2]">
+      <div className="border-l border-r border-black w-screen">
+        <div className={`flex ${isMobile ? "flex-col" : "flex-row"} justify-between`}>
+          <div className="px-2">
+            <Link href="/" className="hover:underline"><h1 className="text-h3 font-semibold tracking-tight font-space-mono">Data Driven Outcomes</h1></Link>
+            <p className="text-sm text-gray-700 font-space-mono">BIG Data for small businesses</p>
           </div>
+          <Link href={p === "/" ? "#contact" : "/#contact"} className="text-h3 text-center px-6 py-2  m-2 mx-auto bg-linear-to-br from-indigo-500 to-purple-500 hover:from-purple-500 hover:to-white hover:text-black duration-200 ease-in-out text-white rounded-md">Get in Touch</Link>
+
+          <nav className="grid grid-cols-3 text-h4 sm:justify-self-end font-space-mono lg:mx-2">
+            <Link href={p === "/" ? "#strategy" : "/"} className={`${p === "/" ? "bg-blue-500 text-white" : ""} hover:bg-blue-500 duration-200 ease-in-out text-center px-2 `}>Info</Link>
+            <Link href="/blog" className={`hover:bg-green-500 ${p.includes("blog") ? "bg-green-500 text-white" : ""} duration-200 ease-in-out text-center px-2`}>Blog</Link>
+            <Link href="/survey" className={`hover:bg-orange-500 ${p.includes("survey") ? "bg-orange-500 text-white" : ""} duration-200 ease-in-out text-center px-2`}>{isMobile ? "Survey" : "SMED Survey"}</Link>
+          </nav>
+
         </div>
-      </header>
-    );
+
+      </div>
+    </header>
+  );
 }

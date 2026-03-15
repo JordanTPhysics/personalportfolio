@@ -14,7 +14,7 @@ export default function Footer() {
           <div className="border-l border-r border-black py-12 px-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <p className="font-semibold">Data Driven Business Management</p>
+                <p className="font-semibold">Data Driven Outcomes</p>
                 <p className="text-sm text-gray-700">
                   Independent data analytics partner for small businesses
                 </p>

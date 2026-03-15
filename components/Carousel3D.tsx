@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { Button } from "@/components/ui/Button";
-import carouselData from "@/components/carousel-data";
+import { useState, useEffect } from "react";
 
 import { IoIosArrowDropupCircle, IoIosArrowDropdownCircle  } from "react-icons/io";
 import { useMediaQuery } from "@/app/hooks/use-media-query";
-
+import { CarouselItem } from "@/components/carousel-data";
 interface Carousel3DProps {
     onActiveIndexChange?: (index: number) => void;
+    data: CarouselItem[];
 }
 
 // Helper function to convert hex color to RGB
@@ -19,12 +18,11 @@ const hexToRgb = (hex: string): string => {
     return `${r}, ${g}, ${b}`;
 };
 
-export default function Carousel3D({ onActiveIndexChange }: Carousel3DProps) {
+export default function Carousel3D({ onActiveIndexChange, data }: Carousel3DProps) {
     const [angle, setAngle] = useState(0);
-    const data = carouselData;
     const itemsPerView = data.length;
     const isMobile = useMediaQuery("(max-width: 768px)");
-    const arrowColour = carouselData[(angle / 360 * itemsPerView)].bgColor;
+    const arrowColour = data[(angle / 360 * itemsPerView)].bgColor;
 
     const rotate = (delta: number) => {
         if (angle + delta >= 360) {
@@ -36,11 +34,9 @@ export default function Carousel3D({ onActiveIndexChange }: Carousel3DProps) {
         }
     };
 
-    // Calculate which item is facing the front
     useEffect(() => {
         const normalizedAngle = ((angle % 360) + 360) % 360;
         const anglePerItem = 360 / itemsPerView;
-        // Find the item closest to 0 degrees (facing front)
         let activeIndex = Math.round(normalizedAngle / anglePerItem) % itemsPerView;
         if (activeIndex < 0) activeIndex += itemsPerView;
 

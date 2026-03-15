@@ -1,14 +1,19 @@
 import Image from "next/image";
 
-interface CarouselItem {
+export interface CarouselItem {
   id: number;
   bgColor: string;
   icon: React.ReactNode;
   title: string;
   desc: string;
 }
+import { FaChartLine, FaDatabase } from "react-icons/fa";
+import { RiDashboard2Line } from "react-icons/ri";
+import { PiCursorClick } from "react-icons/pi";
+import { ImPriceTags } from "react-icons/im";
+import { VscFeedback, VscPerson } from "react-icons/vsc";
 
-const techStackData: CarouselItem[] = [
+export const techStackData: CarouselItem[] = [
   {
     id: 1,
     bgColor: "#3776AB",
@@ -81,4 +86,55 @@ const techStackData: CarouselItem[] = [
   }
 ];
 
-export default techStackData;
+export const arsenalData: CarouselItem[] = [
+  {
+    id: 1,
+    bgColor: "#9333EA",
+    icon: <FaDatabase  size={40} className="object-contain" />,
+    title: "ETL Pipeline",
+    desc: "Automated collection of data from multiple sources into a single, secure database for quick analysis and reporting."
+  },
+  {
+    id: 2,
+    bgColor: "#2563EB",
+    icon: <RiDashboard2Line size={40} className="object-contain" />,
+    title: "Real-Time Dashboard",
+    desc: "All your latest business status and health checks in one place. Customized to your needs to track the KPIs that matter the most."
+  },
+  {
+    id: 3,
+    bgColor: "#16A34A",
+    icon: <FaChartLine size={40} className="object-contain" />,
+    title: "Demand Forecasting",
+    desc: "Historic data is plugged into custom models to predict upcoming demand, predictions can be for the entire business model and tailored to specific products."
+  },
+  {
+    id: 4,
+    bgColor: "#EAB308",
+    icon: <PiCursorClick size={40} className="object-contain" />,
+    title: "Website Tracker",
+    desc: "Tracks website traffic and engagement to understand customer behavior and improve website performance."
+  },  
+  {
+    id: 5,
+    bgColor: "#EA580C",
+    icon: <ImPriceTags size={40} className="object-contain" />,
+    title: "Pricing Models",
+    desc: "For complex products and services, profit margins aren't always well defined. A pricing model can accurately calculate revenue vs. expenses allowing you to remain competitive."
+  },  
+  {  
+    id: 6,
+    bgColor: "#DC2626",
+    icon: <VscFeedback size={40} className="object-contain" />,
+    title: "Feedback Insights",
+    desc: "For businesses with many reviews where customer satisfaction is everything. Natural Language Processing (NLP) applied to reviews and feedback from all available sources to identify pain and gain topics, sentiment over time and "
+  },  
+  {  
+    id: 7,
+    bgColor: "#4F46E5",
+    icon: <VscPerson size={40} className="object-contain" />,
+    title: "Customer Segmentation",
+    desc: "Segments customers into groups based on their behavior and preferences to tailor marketing and sales strategies."
+  },  
+
+];

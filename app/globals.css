@@ -19,6 +19,7 @@
   --color-foreground: var(--foreground);
   --color-slate-600-transparent: rgba(71, 85, 105, 0.8);
   --font-space-mono: var(--font-space-mono);
+  
 }
 
 @layer utilities {
