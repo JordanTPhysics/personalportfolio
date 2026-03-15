@@ -22,13 +22,13 @@ export default function Carousel3D({ onActiveIndexChange, data }: Carousel3DProp
     const [angle, setAngle] = useState(0);
     const itemsPerView = data.length;
     const isMobile = useMediaQuery("(max-width: 768px)");
-    const arrowColour = data[(angle / 360 * itemsPerView)].bgColor;
+    const arrowColour = data[(angle / 360 * itemsPerView)]?.bgColor || "#3776AB";
 
     const rotate = (delta: number) => {
         if (angle + delta >= 360) {
             setAngle(0);
         } else if (angle + delta <= 0) {
-            setAngle(324);
+            setAngle((prev) => (prev + delta));
         } else {
             setAngle((prev) => prev + delta);
         }

@@ -132,7 +132,7 @@
     "required": true
   },
   {
-    "id": 18,
+    "id": 17,
     "question": "Does someone in the business check / process customer feedback? (Google, Website, TrustPilot, Facebook comments / reviews, etc.)",
     "name": "Customer Feedback",
     "type": "radio",
@@ -140,7 +140,7 @@
     "required": true
   },
   {
-    "id": 19,
+    "id": 18,
     "question": "Is customer feedback used to make operational decisions?",
     "name": "Customer Feedback Decisions",
     "type": "radio",
@@ -148,7 +148,7 @@
     "required": true
   },
   {
-    "id": 20,
+    "id": 19,
     "question": "Does your business plan strategy in advance?",
     "name": "Strategy Planning",
     "type": "radio",
@@ -156,7 +156,7 @@
     "required": true
   },
   {
-    "id": 21,
+    "id": 20,
     "question": "Does your business use any software for daily operations?",
     "name": "Software Usage",
     "type": "text",
@@ -164,11 +164,19 @@
     "required": true
   },
   {
-    "id": 22,
+    "id": 21,
     "question": "Is logistics and procurement an essential part of your business operations? (e.g. supermarket ordering enough food to meet demand while minimizing waste)",
     "name": "Logistics Procurement",
     "type": "radio",
     "options": ["Yes", "No", "I don't know", "Prefer not to say"],
+    "required": true
+  },
+  {
+    "id": 22,
+    "question": "What is the biggest challenge you face as a business?",
+    "name": "Biggest Challenge",
+    "type": "text",
+    "options": [],
     "required": true
   },
   {

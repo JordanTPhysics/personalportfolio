@@ -86,7 +86,7 @@ export const techStackData: CarouselItem[] = [
   }
 ];
 
-export const arsenalData: CarouselItem[] = [
+export const servicesData: CarouselItem[] = [
   {
     id: 1,
     bgColor: "#9333EA",
@@ -113,7 +113,7 @@ export const arsenalData: CarouselItem[] = [
     bgColor: "#EAB308",
     icon: <PiCursorClick size={40} className="object-contain" />,
     title: "Website Tracker",
-    desc: "Tracks website traffic and engagement to understand customer behavior and improve website performance."
+    desc: "Tracks website traffic and engagement to understand customer behavior. Track where and when they click, discover which paths lead to either sales or abandonment."
   },  
   {
     id: 5,
@@ -135,6 +135,7 @@ export const arsenalData: CarouselItem[] = [
     icon: <VscPerson size={40} className="object-contain" />,
     title: "Customer Segmentation",
     desc: "Segments customers into groups based on their behavior and preferences to tailor marketing and sales strategies."
-  },  
+  },
+
 
 ];

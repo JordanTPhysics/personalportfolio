@@ -38,9 +38,10 @@ export default function SuccessPage() {
                 <span className="text-h4 text-center mx-8 flex justify-center bg-slate-300 rounded-md p-4 border-2 border-black">
                     Didn't receive the email? Check your spam folder or try again.
                 </span>
+            </div>
+            <div className="flex justify-center mt-12">
                 <Button onClick={handleEmailSend} variant="default" className="rounded-md hover:text-white h-full">Try Again</Button>
             </div>
-            
         </div>
     );
 }

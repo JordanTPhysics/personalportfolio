@@ -17,7 +17,7 @@ export default function Header() {
             <Link href="/" className="hover:underline"><h1 className="text-h3 font-semibold tracking-tight font-space-mono">Data Driven Outcomes</h1></Link>
             <p className="text-sm text-gray-700 font-space-mono">BIG Data for small businesses</p>
           </div>
-          <Link href={p === "/" ? "#contact" : "/#contact"} className="text-h3 text-center px-6 py-2  m-2 mx-auto bg-linear-to-br from-indigo-500 to-purple-500 hover:from-purple-500 hover:to-white hover:text-black duration-200 ease-in-out text-white rounded-md">Get in Touch</Link>
+          <Link href={p === "/" ? "#contact" : "/#contact"} className="text-h3 text-center px-6 py-2  m-2 mx-auto bg-linear-to-br from-indigo-500 to-purple-500 hover:from-purple-500 hover:to-white hover:text-black hover:scale-105 duration-200 ease-in-out text-white rounded-md">Get in Touch</Link>
 
           <nav className="grid grid-cols-3 text-h4 sm:justify-self-end font-space-mono lg:mx-2">
             <Link href={p === "/" ? "#strategy" : "/"} className={`${p === "/" ? "bg-blue-500 text-white" : ""} hover:bg-blue-500 duration-200 ease-in-out text-center px-2 `}>Info</Link>

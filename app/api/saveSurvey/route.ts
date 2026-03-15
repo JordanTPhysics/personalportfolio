@@ -58,13 +58,13 @@ export async function POST(req: Request) {
     answerMap["Strategy Planning"],
     answerMap["Software Usage"],
     answerMap["Logistics Procurement"],
+    answerMap["Biggest Challenge"],
     answerMap["Data Leverage"],
     answerMap["Data Driven Approach Before"],
     answerMap["Data Driven Approach After"],
     answerMap["Final Comments"],
   ]
 
-  // A:BF = 58 columns (6 metadata + 26 answers + 26 extras)
   await sheets.spreadsheets.values.append({
     spreadsheetId: process.env.SPREADSHEET_ID!,
     range: "Sheet1!A:BF",

@@ -5,8 +5,9 @@ import "./globals.css";
 import "leaflet/dist/leaflet.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-// import FaroInit from "@/components/FaroInit";
+import FaroInit from "@/components/FaroInit";
 import Script from "next/script";
+import WakeStreamlit from "@/components/WakeStreamlit";
 
 const spaceMono = Space_Mono({
   variable: "--font-space-mono",
@@ -28,7 +29,7 @@ const scienceGothic = Science_Gothic({
 
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://datadrivenjordan.netlify.app/"),
+  metadataBase: new URL("https://datadrivenscience.co.uk/"),
   title: {
     default: "DataDrivenOutcomes – Data-Driven Business Management",
     template: "%s | DataDrivenOutcomes",
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    url: "https://datadrivenjordan.netlify.app/",
+    url: "https://datadrivenscience.co.uk/",
     title: "DataDrivenOutcomes – Data-Driven Business Management",
     description:
       "Independent data analytics partner helping small businesses make better decisions. Make more money, save money, and understand customers through practical data science.",
@@ -82,7 +83,7 @@ export default function RootLayout({
               name: "DataDrivenOutcomes",
               applicationCategory: "BusinessApplication",
               operatingSystem: "Web",
-              url: "https://datadrivenjordan.netlify.app/",
+              url: "https://datadrivenscience.co.uk/",
               description:
                 "Data Driven Outcomes for Small Businesses",
               offers: {
@@ -103,7 +104,8 @@ export default function RootLayout({
       <body
         className={`${spaceMono.variable} ${titilliumWeb.variable} ${scienceGothic.variable} antialiased min-h-screen bg-[#F7F6F2]`}
       >
-        {/* <FaroInit/> */}
+        <WakeStreamlit />
+        <FaroInit/>
         <Header />
         {children}
         <Footer />
