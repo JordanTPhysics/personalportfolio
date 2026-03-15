@@ -49,7 +49,7 @@ export default function Question({ question, value, onChange }: QuestionProps) {
                             aria-expanded={showTooltip}
                             aria-label="More information"
                         >
-                            <ImInfo className="w-full h-full" size={25} color={"teal"} aria-hidden />
+                            <ImInfo className="w-full h-full max-w-6 max-h-6" size={25} color={"teal"} aria-hidden />
                         </button>
                         <div
                             className={`absolute right-0 top-full z-10 mt-1 w-96 p-2 rounded-md bg-foreground text-background text-sm font-space-mono shadow-lg transition-opacity ${
@@ -133,7 +133,7 @@ export default function Question({ question, value, onChange }: QuestionProps) {
                                 onChange={(e) => onChange(value, e.target.value)}
                                 placeholder="Please specify..."
                                 rows={3}
-                                className="w-full rounded-md border border-foreground/20 bg-background px-3 py-2 font-space-mono text-body text-foreground placeholder:text-foreground/50 focus:border-accent-blue focus:outline-none focus:ring-1 focus:ring-accent-blue"
+                                className="w-full col-span-2 rounded-md border border-foreground/20 bg-background px-3 py-2 font-space-mono text-body text-foreground placeholder:text-foreground/50 focus:border-accent-blue focus:outline-none focus:ring-1 focus:ring-accent-blue"
                             />
                         )}
                     </div>

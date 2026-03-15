@@ -5,7 +5,7 @@ import "./globals.css";
 import "leaflet/dist/leaflet.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import FaroInit from "@/components/FaroInit";
+import FrontendObservability from "@/components/frontend-observability";
 import Script from "next/script";
 import WakeStreamlit from "@/components/WakeStreamlit";
 
@@ -105,8 +105,8 @@ export default function RootLayout({
         className={`${spaceMono.variable} ${titilliumWeb.variable} ${scienceGothic.variable} antialiased min-h-screen bg-[#F7F6F2]`}
       >
         <WakeStreamlit />
-        <FaroInit/>
         <Header />
+        <FrontendObservability />
         {children}
         <Footer />
       </body>
