@@ -196,9 +196,9 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="flex justify-between p-2">
+        <div className="flex justify-evenly p-2">
           <span className="text-h4">Tech Stack</span>
-          <Switch size="lg" checked={skillsShown === "Services"} onCheckedChange={() => setSkillsShown(skillsShown === "Services" ? "Tech Stack" : "Services")}/>
+          <Switch data-tracker-id="tech-stack-switch" size="lg" checked={skillsShown === "Services"} onCheckedChange={() => setSkillsShown(skillsShown === "Services" ? "Tech Stack" : "Services")}/>
           <span className="text-h4">Services</span>
         </div>
 

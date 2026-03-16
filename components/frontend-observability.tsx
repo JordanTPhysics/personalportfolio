@@ -1,6 +1,6 @@
 'use client';
 
-import { faro, getWebInstrumentations, initializeFaro } from '@grafana/faro-web-sdk';
+import { faro, getWebInstrumentations, initializeFaro, NavigationInstrumentation, UserActionInstrumentation } from '@grafana/faro-web-sdk';
 import { TracingInstrumentation } from '@grafana/faro-web-tracing';
 import { useEffect } from 'react';
 
@@ -23,7 +23,13 @@ export default function FrontendObservability() {
         instrumentations: [
           ...getWebInstrumentations(),
           new TracingInstrumentation(),
+          new NavigationInstrumentation(),
+          new UserActionInstrumentation(),
         ],
+
+        userActionsInstrumentation: {
+          dataAttributeName: "trackerId",
+        },
       });
     } catch (e) {
       console.error('Faro init failed', e);

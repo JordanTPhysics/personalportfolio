@@ -127,14 +127,14 @@ export const servicesData: CarouselItem[] = [
     bgColor: "#DC2626",
     icon: <VscFeedback size={40} className="object-contain" />,
     title: "Feedback Insights",
-    desc: "For businesses with many reviews where customer satisfaction is everything. Natural Language Processing (NLP) applied to reviews and feedback from all available sources to identify pain and gain topics, sentiment over time and "
+    desc: "For businesses with many reviews where customer satisfaction is everything. Natural Language Processing (NLP) applied to reviews and feedback from all available sources to identify customer gains, pains and sentiment over time."
   },  
   {  
     id: 7,
     bgColor: "#4F46E5",
     icon: <VscPerson size={40} className="object-contain" />,
     title: "Customer Segmentation",
-    desc: "Segments customers into groups based on their behavior and preferences to tailor marketing and sales strategies."
+    desc: "Segments customers into groups based on their behavior and preferences to tailor marketing and sales strategies. Discover which groups of customers influence revenue and popularity the most."
   },
 
 

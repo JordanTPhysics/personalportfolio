@@ -2,6 +2,7 @@
 
 import { useState, FormEvent } from "react";
 import emailjs from "@emailjs/browser";
+import { Button } from "./ui/Button";
 
 interface FormData {
   name: string;
@@ -71,10 +72,11 @@ export default function ContactForm() {
     <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full lg:w-2/3 mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="name" className="block text-sm font-semibold mb-1">
-            Name *
+          <label htmlFor="name" className="block text-sm font-space-mono font-semibold mb-1">
+            Name <span className="text-red-500">*</span>
           </label>
           <input
+            data-tracker-id="cta-form-name"
             type="text"
             id="name"
             name="name"
@@ -85,10 +87,11 @@ export default function ContactForm() {
           />
         </div>
         <div>
-          <label htmlFor="email" className="block text-sm font-semibold mb-1">
-            Email *
+          <label htmlFor="email" className="block text-sm font-space-mono font-semibold mb-1">
+            Email <span className="text-red-500">*</span>
           </label>
           <input
+            data-tracker-id="cta-form-email"
             type="email"
             id="email"
             name="email"
@@ -102,10 +105,11 @@ export default function ContactForm() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="phone" className="block text-sm font-semibold mb-1">
+          <label htmlFor="phone" className="block text-sm font-space-mono font-semibold mb-1">
             Phone
           </label>
           <input
+            data-tracker-id="cta-form-phone"
             type="tel"
             id="phone"
             name="phone"
@@ -115,10 +119,11 @@ export default function ContactForm() {
           />
         </div>
         <div>
-          <label htmlFor="topic" className="block text-sm font-semibold mb-1">
+          <label htmlFor="topic" className="block text-sm font-space-mono font-semibold mb-1">
             Topic
           </label>
           <select
+            data-tracker-id="cta-form-topic"
             id="topic"
             name="topic"
             value={formData.topic}
@@ -138,10 +143,11 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-sm font-semibold mb-1">
-          Message *
+        <label htmlFor="message" className="block text-sm font-semibold font-space-mono mb-1">
+          Message <span className="text-red-500">*</span>
         </label>
         <textarea
+          data-tracker-id="cta-form-message"
           id="message"
           name="message"
           required
@@ -164,13 +170,14 @@ export default function ContactForm() {
         </div>
       )}
 
-      <button
+      <Button
+        data-tracker-id="cta-form-submit"
         type="submit"
         disabled={isSubmitting}
         className="border mx-auto border-black px-8 py-3 font-semibold bg-background hover:bg-blue-500 hover:text-white hover:border-white duration-200 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {isSubmitting ? "Sending..." : "Send Message"}
-      </button>
+      </Button>
     </form>
   );
 }

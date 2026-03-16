@@ -140,7 +140,7 @@ export default function SurveyPage() {
             placeholder="Enter your email"
             className="w-full lg:w-1/2 p-2 border-2 border-black rounded-md bg-background"
           />
-          <Button onClick={handleSubmit} variant="default" className="rounded-md hover:text-white h-full">Submit</Button>
+          <Button onClick={handleSubmit} data-tracker-id="submit-survey" variant="default" className="rounded-md hover:text-white h-full">Submit</Button>
         </div>
         {submitError && (
           <p className="text-h4 text-red-500 font-space-mono m-2 flex justify-center bg-background p-4 border border-black rounded-md">{submitError}</p>

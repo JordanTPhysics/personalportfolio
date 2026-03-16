@@ -12,7 +12,7 @@ export default function Footer() {
     return (
         <footer className="border-t border-black bg-[#F7F6F2]">
           <div className="border-l border-r border-black py-12 px-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 font-space-mono">
               <div>
                 <p className="font-semibold">Data Driven Outcomes</p>
                 <p className="text-sm text-gray-700">
@@ -20,8 +20,8 @@ export default function Footer() {
                 </p>
               </div>
               <div className="text-sm text-gray-600 sm:justify-self-end">
-                <Link href={githubUrl}><FaGithub size={iconSize} color="black" /></Link>
-                <Link href={linkedinUrl}><FaLinkedin size={iconSize} color="teal" /></Link>
+                <Link data-tracker-id="github-link" href={githubUrl}><FaGithub size={iconSize} color="black" /></Link>
+                <Link data-tracker-id="linkedin-link" href={linkedinUrl}><FaLinkedin size={iconSize} color="teal" /></Link>
               </div>
             </div>
           </div>
