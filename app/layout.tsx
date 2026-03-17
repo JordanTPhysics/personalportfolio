@@ -101,6 +101,16 @@ export default function RootLayout({
             }),
           }}
         />
+
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-Q7TR5Q79JQ"/>
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-Q7TR5Q79JQ');
+          `}
+        </Script>
       <body
         className={`${spaceMono.variable} ${titilliumWeb.variable} ${scienceGothic.variable} antialiased min-h-screen bg-[#F7F6F2]`}
       >
