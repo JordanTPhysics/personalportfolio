@@ -43,7 +43,7 @@ export default function Question({ question, value, onChange }: QuestionProps) {
                 </h3>
                 {question.tooltip && (
                     <div ref={tooltipRef} className="relative group">
-                        <Button
+                        <button
                             type="button"
                             onClick={() => setTooltipOpen((open) => !open)}
                             className="touch-manipulation p-1 -m-1 cursor-help"
@@ -51,7 +51,7 @@ export default function Question({ question, value, onChange }: QuestionProps) {
                             aria-label="More information"
                         >
                             <ImInfo className="w-full h-full max-w-6 max-h-6" size={25} color={"teal"} aria-hidden />
-                        </Button>
+                        </button>
                         <div
                             className={`absolute right-0 top-full z-10 mt-1 w-96 p-2 rounded-md bg-foreground text-background text-sm font-space-mono shadow-lg transition-opacity ${
                                 showTooltip ? "opacity-100 visible" : "opacity-0 invisible group-hover:opacity-100 group-hover:visible"

@@ -72,7 +72,7 @@
     "question": "What are your main sources of new prospects? (Select all that apply)",
     "name": "Prospect Sources",
     "type": "checkbox",
-    "options": ["Internet Ads (Google, Facebook, Youtube)","Website/Funnel", "Referrals", "Traditional Advertising (Newspaper, Radio, TV)", "Events (Trade Shows, Conferences, etc.)", "Word of Mouth", "Other"],
+    "options": ["Internet Ads (Google, Facebook, Youtube)","Website / Funnel", "Referrals", "Traditional Advertising (Newspaper, Radio, TV)", "Events (Trade Shows, Conferences, etc.)", "Word of Mouth", "Other"],
     "required": true
   },
   {
