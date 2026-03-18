@@ -86,10 +86,10 @@ export default function Carousel3D({ onActiveIndexChange, data }: Carousel3DProp
             </div>
 
             <div className="absolute lg:left-0 left-1/6 top-1/2 -translate-y-1/2 flex flex-col gap-4">
-                <button className="rounded-full" onClick={() => rotate(-360 / itemsPerView)}>
+                <button className="rounded-full" data-tracker-id="carousel-up-button" onClick={() => rotate(-360 / itemsPerView)}>
                     <IoIosArrowDropupCircle size={isMobile ? 36 : 48} color={arrowColour} />
                 </button>
-                <button className="rounded-full" onClick={() => rotate(360 / itemsPerView)}>
+                <button className="rounded-full" data-tracker-id="carousel-down-button" onClick={() => rotate(360 / itemsPerView)}>
                     <IoIosArrowDropdownCircle size={isMobile ? 36 : 48} color={arrowColour} />
                 </button>
             </div>

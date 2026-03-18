@@ -6,12 +6,11 @@ import { useEffect } from 'react';
 
 export default function FrontendObservability() {
   useEffect(() => {
-    // skip if already initialized
-    if (faro.api?.pushEvent !== undefined) {
-      return;
-    }
+    const w = window as any;
+    if (w.__FARO_INITIALIZED === true) return;
 
     try {
+      w.__FARO_INITIALIZED = true;
       initializeFaro({
         url: 'https://faro-collector-prod-gb-south-1.grafana.net/collect/adaa2fe0ffa4e7dc1d82d14aa43b1527',
         app: {
@@ -32,6 +31,8 @@ export default function FrontendObservability() {
         },
       });
     } catch (e) {
+      // If initialization fails, allow a retry.
+      w.__FARO_INITIALIZED = false;
       console.error('Faro init failed', e);
     }
   }, []);

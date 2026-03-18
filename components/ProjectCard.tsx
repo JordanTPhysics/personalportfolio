@@ -1,3 +1,4 @@
+import { faro } from "@grafana/faro-web-sdk";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -20,7 +21,7 @@ export default function ProjectCard({
 }: ProjectCardProps) {
   return (
     <div className="border border-black inset-border duration-300 ease-in-out hover:bg-blue-500 hover:text-white h-full flex flex-col">
-      <Link data-tracker-id={`project-card-link-${title.toLowerCase().replace(/ /g, "-")}`} href={link} target="_blank" rel="noopener noreferrer" className="h-full flex flex-col min-h-0">
+      <Link data-tracker-id={`project-card-link-${title.toLowerCase().replace(/ /g, "-")}`} href={link} onClick={() => faro.api.pushEvent(`project-card-link-${title.toLowerCase().replace(/ /g, "-")}`)} target="_blank" rel="noopener noreferrer" className="h-full flex flex-col min-h-0">
         <div className="flex flex-col flex-1 min-h-0">
           <div className="border-b border-black flex justify-center items-center bg-slate-600-transparent shrink-0">
             <Image

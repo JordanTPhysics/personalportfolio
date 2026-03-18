@@ -11,6 +11,7 @@ import { TbSTurnDown } from "react-icons/tb";
 import ProjectCard from "@/components/ProjectCard";
 import ContactForm from "@/components/ContactForm";
 import { Switch } from "@/components/ui/switch";
+import faro from "@grafana/faro-web-sdk";
 
 const roles = [" Data Scientist", " Business Partner", " Full Stack Developer", ' "Numbers Guy"'];
 const products = ['Pricing Models', 'Data Pipelines', 'Feedback Insights', 'Behaviour Models', 'Demand Forecasts', 'Website Tracking']
@@ -229,7 +230,7 @@ export default function Home() {
           <div className="p-4 h-full flex">
             <ProjectCard
               title="Ecommerce Data Exploration"
-              description="Explore how a single CSV of invoices for an online retailer fountains into endless valuable insights with a few simple data analysis tools in Python"
+              description="Explore how a single CSV of invoices for an online retailer fountains into endless valuable insights with Python's Streamlit and Pandas libraries (App may be sleeping, but a button click will wake it up)"
               imageSrc="/images/ecommerce.png"
               imageAlt="Ecommerce Data Exploration"
               imageSize={512}
