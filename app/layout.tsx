@@ -7,7 +7,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FrontendObservability from "@/components/frontend-observability";
 import Script from "next/script";
-import WakeStreamlit from "@/components/WakeStreamlit";
 
 const spaceMono = Space_Mono({
   variable: "--font-space-mono",
@@ -93,9 +92,16 @@ export default function RootLayout({
               },
               softwareAddOn: [
                 {
-                  "@type": "SoftwareApplication",
-                  name: "Data Science Portfolio",
-                  description: "Data Science for Small Businesses",
+                  "@type": "OperatingSystem",
+                  name: "Windows",
+                },
+                {
+                  "@type": "OperatingSystem",
+                  name: "macOS",
+                },
+                {
+                  "@type": "OperatingSystem",
+                  name: "Linux",
                 },
               ],
             }),
@@ -114,7 +120,6 @@ export default function RootLayout({
       <body
         className={`${spaceMono.variable} ${titilliumWeb.variable} ${scienceGothic.variable} antialiased min-h-screen bg-[#F7F6F2]`}
       >
-        <WakeStreamlit />
         <Header />
         <FrontendObservability />
         {children}
