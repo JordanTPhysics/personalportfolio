@@ -11,7 +11,7 @@ import { TbSTurnDown } from "react-icons/tb";
 import ProjectCard from "@/components/ProjectCard";
 import ContactForm from "@/components/ContactForm";
 import { Switch } from "@/components/ui/switch";
-import faro from "@grafana/faro-web-sdk";
+import { trackMouseEnter, trackSwitchClick } from "@/lib/analytics";
 
 const roles = [" Data Scientist", " Business Partner", " Full Stack Developer", ' "Numbers Guy"'];
 const products = ['Pricing Models', 'Data Pipelines', 'Feedback Insights', 'Behaviour Models', 'Demand Forecasts', 'Website Tracking']
@@ -50,9 +50,18 @@ export default function Home() {
     };
   }, []);
 
+  const handleTechStackSwitch = (checked: boolean) => {
+    trackSwitchClick("Tech Stack Switch");
+    setSkillsShown(checked ? "Services" : "Tech Stack");
+  };
+
+  const handleSectionMouseEnter = (e: React.MouseEvent<HTMLDivElement>) => {
+    trackMouseEnter(e.currentTarget.id);
+  };
+
   return (
     <main className="mx-auto lg:max-w-[80vw] w-[90vw]  text-black">
-      <section id="about" className="border-l border-r border-black ">
+      <section id="about" className="border-l border-r border-black" onMouseEnter={handleSectionMouseEnter}>
         <div className="lg:grid lg:grid-cols-5 lg:grid-rows-2 grid-cols-1 grid-rows-2 text-white bg-radial from-slate-600-transparent to-slate-950">
           <h2 className="text-h2 bg-background text-black min-h-20 font-semibold tracking-tight text-accent-blue col-span-4 row-span-1 border-b px-2">
             Hi, I'm Jordan Thijssen, your <br /> <TypeWriterText texts={roles} />
@@ -76,7 +85,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="mission" className="border-x border-black bg-background">
+      <section id="mission" className="border-x border-black bg-background" onMouseEnter={handleSectionMouseEnter}>
         <div className="flex flex-col">
           <div className="flex flex-row">
             <div className="border-r-2 w-2/3 border-black bg-linear-to-br from-orange-500 to-white inset-border lg:p-8 p-2 duration-200 ease-in-out hover:from-white hover:to-orange-500">
@@ -114,7 +123,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="strategy" className="border-x border-black bg-background">
+      <section id="strategy" className="border-x border-black bg-background" onMouseEnter={handleSectionMouseEnter}>
         <div className="flex flex-col">
           <h2 className="text-h2 font-semibold font-space-mono px-2 border-b">A Clear Strategy: Data Driven Outcomes in 4 Steps</h2>
           <div className="flex flex-col p-6 gap-6">
@@ -180,7 +189,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="tech-stack" className="border-x border-black text-white bg-radial from-slate-600-transparent to-slate-950">
+      <section id="tech-stack" className="border-x border-black text-white bg-radial from-slate-600-transparent to-slate-950" onMouseEnter={handleSectionMouseEnter}>
         <div className="flex flex-col">
           <h2 className="text-h2 font-semibold font-space-mono px-2 border-b">My {skillsShown}</h2>
           <div className="flex flex-col lg:flex-row min-h-[40vh] px-4">
@@ -199,13 +208,13 @@ export default function Home() {
         </div>
         <div className="flex justify-evenly p-2">
           <span className="text-h4">Tech Stack</span>
-          <Switch data-tracker-id="tech-stack-switch" size="lg" checked={skillsShown === "Services"} onCheckedChange={() => setSkillsShown(skillsShown === "Services" ? "Tech Stack" : "Services")}/>
+          <Switch data-tracker-id="tech-stack-switch" size="lg" checked={skillsShown === "Services"} onCheckedChange={handleTechStackSwitch}/>
           <span className="text-h4">Services</span>
         </div>
 
       </section>
 
-      <section id="about" className="border-x bg-background">
+      <section id="about" className="border-x bg-background" onMouseEnter={handleSectionMouseEnter}>
         <div className="flex flex-col">
           <h2 className="text-h2 font-semibold font-space-mono px-2 border-b">
             My Story
@@ -222,7 +231,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="projects" className="border-x border-black bg-background">
+      <section id="projects" className="border-x border-black bg-background" onMouseEnter={handleSectionMouseEnter}>
         <h2 className="text-h2 font-semibold font-space-mono px-2 border-b">
           My Projects
         </h2>
@@ -261,7 +270,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contact" className="border-x border-black">
+      <section id="contact" className="border-x border-black" onMouseEnter={handleSectionMouseEnter}>
         <div className="flex flex-col">
           <h2 className="text-h2 font-semibold font-space-mono px-2 border-y bg-background">
             Get in touch

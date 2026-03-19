@@ -3,6 +3,8 @@
 import { useState, FormEvent } from "react";
 import emailjs from "@emailjs/browser";
 import { Button } from "./ui/Button";
+import { trackFormSubmit, trackMouseEnter, trackInputFocus } from "@/lib/analytics";
+
 
 interface FormData {
   name: string;
@@ -38,6 +40,8 @@ export default function ContactForm() {
     setIsSubmitting(true);
     setSubmitStatus("idle");
 
+    trackFormSubmit("contact-form");
+
     try {
       await emailjs.send(
         "service_iryb57a",
@@ -69,7 +73,7 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full lg:w-2/3 mx-auto">
+    <form onSubmit={handleSubmit} id="contact-form" className="flex flex-col gap-4 w-full lg:w-2/3 mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label htmlFor="name" className="block text-sm font-space-mono font-semibold mb-1">
@@ -83,6 +87,7 @@ export default function ContactForm() {
             required
             value={formData.name}
             onChange={handleChange}
+            onFocus={() => trackInputFocus("cta-form-name")}
             className="w-full border border-black px-4 py-2 bg-background focus:outline-none focus:ring-2 focus:ring-black"
           />
         </div>
@@ -98,6 +103,7 @@ export default function ContactForm() {
             required
             value={formData.email}
             onChange={handleChange}
+            onFocus={() => trackInputFocus("cta-form-email")}
             className="w-full border border-black px-4 py-2 bg-background focus:outline-none focus:ring-2 focus:ring-black"
           />
         </div>
@@ -115,6 +121,7 @@ export default function ContactForm() {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
+            onFocus={() => trackInputFocus("cta-form-phone")}
             className="w-full border border-black px-4 py-2 bg-background focus:outline-none focus:ring-2 focus:ring-black"
           />
         </div>
@@ -128,6 +135,7 @@ export default function ContactForm() {
             name="topic"
             value={formData.topic}
             onChange={handleChange}
+            onFocus={() => trackInputFocus("cta-form-topic")}
             className="w-full border border-black px-4 py-2 bg-background focus:outline-none focus:ring-2 focus:ring-black"
           >
             <option value="">Select a topic</option>
@@ -154,6 +162,7 @@ export default function ContactForm() {
           rows={6}
           value={formData.message}
           onChange={handleChange}
+          onFocus={() => trackInputFocus("cta-form-message")}
           className="w-full lg:w-1/2  border border-black px-4 py-2 bg-background focus:outline-none focus:ring-2 focus:ring-black resize-none"
         />
       </div>

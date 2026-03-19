@@ -6,11 +6,11 @@ const lastModified = new Date().toUTCString();
 // Content Security Policy: allow self, Google Analytics, Grafana Faro, Leaflet tiles
 const csp = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://api.emailjs.com",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "img-src 'self' data: blob: https:",
   "font-src 'self' https://fonts.gstatic.com",
-  "connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://*.grafana.net https://faro-collector-prod-gb-south-1.grafana.net",
+  "connect-src 'self' https://*.google-analytics.com https://www.googletagmanager.com https://*.grafana.net https://faro-collector-prod-gb-south-1.grafana.net https://api.emailjs.com",
   "frame-src 'self'",
   "base-uri 'self'",
   "form-action 'self'",

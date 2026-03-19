@@ -4,13 +4,15 @@ import { useMediaQuery } from "@/app/hooks/use-media-query";
 import Link from "next/link";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
+import { trackLinkClick, trackMouseEnter } from "@/lib/analytics";
+
 export default function Footer() {
     const githubUrl = "https://github.com/JordanTPhysics";
     const linkedinUrl = "https://www.linkedin.com/in/jordan-thijssen-373a431a5/";
 
     const iconSize = useMediaQuery("(max-width: 768px)") ? 24 : 36;
     return (
-        <footer className="border-t border-black bg-[#F7F6F2]">
+        <footer className="border-t border-black bg-[#F7F6F2]" onMouseEnter={() => trackMouseEnter("footer")}>
           <div className="border-l border-r border-black py-12 px-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 font-space-mono">
               <div>
@@ -20,8 +22,8 @@ export default function Footer() {
                 </p>
               </div>
               <div className="text-sm text-gray-600 sm:justify-self-end">
-                <Link data-tracker-id="github-link" href={githubUrl}><FaGithub size={iconSize} color="black" /></Link>
-                <Link data-tracker-id="linkedin-link" href={linkedinUrl}><FaLinkedin size={iconSize} color="teal" /></Link>
+                <Link data-tracker-id="github-link" onClick={() => trackLinkClick("github-link", "GitHub")} href={githubUrl}><FaGithub size={iconSize} color="black" /></Link>
+                <Link data-tracker-id="linkedin-link" onClick={() => trackLinkClick("linkedin-link", "LinkedIn")} href={linkedinUrl}><FaLinkedin size={iconSize} color="teal" /></Link>
               </div>
             </div>
           </div>

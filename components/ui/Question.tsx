@@ -5,8 +5,7 @@ import { QuestionModel } from "@/lib/QuestionModel";
 import { Slider } from "./slider";
 import { ImInfo } from "react-icons/im";
 import Link from "next/link";
-import { Button } from "./Button";
-
+import { trackInputFocus } from "@/lib/analytics";
 interface QuestionProps {
     question: QuestionModel;
     value: string[];
@@ -70,6 +69,7 @@ export default function Question({ question, value, onChange }: QuestionProps) {
                     <textarea
                         value={value[0] ?? ""}
                         onChange={(e) => onChange([e.target.value], "")}
+                        onFocus={() => trackInputFocus(`question-${question.id}-text`)}
                         placeholder="Type your answer..."
                         rows={3}
                         className="w-full rounded-md border border-foreground/20 bg-background px-3 py-2 font-space-mono text-body text-foreground placeholder:text-foreground/50 focus:border-accent-blue focus:outline-none focus:ring-1 focus:ring-accent-blue"
@@ -80,7 +80,7 @@ export default function Question({ question, value, onChange }: QuestionProps) {
                     <div className="space-y-2">
                         <div className="flex items-center">
                             <span className="font-space-mono text-body">{question.options[0]}</span>
-                            <Slider value={[Number(value[0])]} onValueChange={(value) => onChange([value[0].toString()], "")} min={1} max={10} />
+                            <Slider value={[Number(value[0])]} onFocus={() => trackInputFocus(`question-${question.id}-range`)} onValueChange={(value) => onChange([value[0].toString()], "")} min={1} max={10} />
                             <span className="font-space-mono text-body">{question.options[1]}</span>
                         </div>
                         <p className="font-space-mono text-sm">
@@ -90,7 +90,7 @@ export default function Question({ question, value, onChange }: QuestionProps) {
                 )}
 
                 {question.type === "dropdown" && (
-                    <select value={value[0] ?? ""} onChange={(e) => onChange([e.target.value], "")} className="w-full rounded-md border border-foreground/20 bg-background px-3 py-2 font-space-mono text-body text-foreground placeholder:text-foreground/50 focus:border-accent-blue focus:outline-none focus:ring-1 focus:ring-accent-blue">
+                    <select value={value[0] ?? ""} onFocus={() => trackInputFocus(`question-${question.id}-dropdown`)} onChange={(e) => onChange([e.target.value], "")} className="w-full rounded-md border border-foreground/20 bg-background px-3 py-2 font-space-mono text-body text-foreground placeholder:text-foreground/50 focus:border-accent-blue focus:outline-none focus:ring-1 focus:ring-accent-blue">
                         {question.options.map((option) => (
                             <option key={option} value={option}>{option}</option>
                         ))}
@@ -101,7 +101,7 @@ export default function Question({ question, value, onChange }: QuestionProps) {
                     <div className="grid grid-cols-2 gap-4">
                         {question.options.map((option) => (
                             <label key={option} className="flex items-center gap-2">
-                                <input type="radio" value={option} checked={value[0] === option} onChange={() => onChange([option], "")} className="w-4 h-4" />
+                                <input type="radio" value={option} onFocus={() => trackInputFocus(`question-${question.id}-radio`)} checked={value[0] === option} onChange={() => onChange([option], "")} className="w-4 h-4" />
                                 <span className="font-space-mono text-body">{option}</span>
                             </label>
                         ))}
@@ -115,6 +115,7 @@ export default function Question({ question, value, onChange }: QuestionProps) {
                                 <input
                                     type="checkbox"
                                     value={option}
+                                    onFocus={() => trackInputFocus(`question-${question.id}-checkbox`)}
                                     checked={value.includes(option)}
                                     onChange={(e) => {
                                         const next = e.target.checked
@@ -131,6 +132,7 @@ export default function Question({ question, value, onChange }: QuestionProps) {
                         {value.includes("Other") && (
                             <textarea
                                 value={question.extra ?? ""}
+                                onFocus={() => trackInputFocus(`question-${question.id}-textarea`)}
                                 onChange={(e) => onChange(value, e.target.value)}
                                 placeholder="Please specify..."
                                 rows={3}
