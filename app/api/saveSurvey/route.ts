@@ -13,6 +13,21 @@ export async function POST(req: Request) {
 
   const sheets = google.sheets({ version: "v4", auth })
 
+  if (data.sessionId) {
+    const existingIds = await sheets.spreadsheets.values.get({
+      spreadsheetId: process.env.SPREADSHEET_ID!,
+      range: "Sheet1!B:B",
+    })
+
+    const idAlreadyExists = (existingIds.data.values ?? []).some(
+      (row) => (row?.[0] ?? "") === data.sessionId
+    )
+
+    if (idAlreadyExists) {
+      return Response.json({ success: true, duplicate: true })
+    }
+  }
+
   // Map questionId -> single string (join array values)
   const answerMap: Record<string, string> = {}
   for (const a of data.answers ?? []) {
@@ -29,7 +44,7 @@ export async function POST(req: Request) {
   const row = [
     // Metadata columns
     meta.submittedAt ?? new Date().toISOString(),
-    data.sessionId ?? data.session_id ?? "",
+    data.sessionId ?? "",
     data.email ?? "",
     meta.userAgent ?? "",
     meta.referrer ?? "",

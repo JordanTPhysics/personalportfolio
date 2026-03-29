@@ -1,13 +1,14 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { getBlogPostBySlug, getAllBlogPosts } from "../blog-data";
+import { renderInlineMarkdown } from "@/lib/blog-inline";
 import { Metadata } from "next";
 import React from "react";
 
 interface BlogPostPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export async function generateStaticParams() {
@@ -18,7 +19,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
-  const post = getBlogPostBySlug(params.slug);
+  const { slug } = await params;
+  const post = getBlogPostBySlug(slug);
   
   if (!post) {
     return {
@@ -32,8 +34,9 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   };
 }
 
-export default function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = getBlogPostBySlug(params.slug);
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
+  const { slug } = await params;
+  const post = getBlogPostBySlug(slug);
 
   if (!post) {
     notFound();
@@ -56,7 +59,9 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           elements.push(
             <ul key={`ul-${elements.length}`} className="list-disc ml-6 mb-4 space-y-2">
               {currentListItems.map((item, idx) => (
-                <li key={idx} className="text-body">{item}</li>
+                <li key={idx} className="text-body">
+                  {renderInlineMarkdown(item, `ul-${elements.length}-li-${idx}`)}
+                </li>
               ))}
             </ul>
           );
@@ -64,7 +69,9 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           elements.push(
             <ol key={`ol-${elements.length}`} className="list-decimal ml-6 mb-4 space-y-2">
               {currentListItems.map((item, idx) => (
-                <li key={idx} className="text-body">{item}</li>
+                <li key={idx} className="text-body">
+                  {renderInlineMarkdown(item, `ol-${elements.length}-li-${idx}`)}
+                </li>
               ))}
             </ol>
           );
@@ -77,7 +84,7 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
 
     lines.forEach((line, index) => {
       // Handle code blocks
-      if (line.startsWith('```')) {
+      if (line.trimStart().startsWith('```')) {
         flushList();
         if (inCodeBlock) {
           elements.push(
@@ -89,7 +96,12 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           inCodeBlock = false;
         } else {
           if (currentParagraph.length > 0) {
-            elements.push(<p key={`p-${index}`} className="text-body mb-4">{currentParagraph.join(' ')}</p>);
+            const paragraphText = currentParagraph.join(" ");
+            elements.push(
+              <p key={`p-${index}`} className="text-body mb-4">
+                {renderInlineMarkdown(paragraphText, `p-${index}`)}
+              </p>
+            );
             currentParagraph = [];
           }
           inCodeBlock = true;
@@ -103,51 +115,81 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
       }
 
       // Handle headings
-      if (line.startsWith('# ')) {
+      if (line.trimStart().startsWith('# ')) {
         flushList();
         if (currentParagraph.length > 0) {
-          elements.push(<p key={`p-${index}`} className="text-body mb-4">{currentParagraph.join(' ')}</p>);
+          const paragraphText = currentParagraph.join(" ");
+          elements.push(
+            <p key={`p-${index}`} className="text-body mb-4">
+              {renderInlineMarkdown(paragraphText, `p-${index}`)}
+            </p>
+          );
           currentParagraph = [];
         }
-        elements.push(<h2 key={`h2-${index}`} className="text-h3 font-semibold font-space-mono mt-6 mb-4">{line.substring(2)}</h2>);
+        const h2Text = line.trim().replace(/^#\s+/, "");
+        elements.push(
+          <h2 key={`h2-${index}`} className="text-h3 font-semibold font-space-mono mt-6 mb-4">
+            {renderInlineMarkdown(h2Text, `h2-${index}`)}
+          </h2>
+        );
         return;
       }
 
-      if (line.startsWith('## ')) {
+      if (line.trimStart().startsWith('## ')) {
         flushList();
         if (currentParagraph.length > 0) {
-          elements.push(<p key={`p-${index}`} className="text-body mb-4">{currentParagraph.join(' ')}</p>);
+          const paragraphText = currentParagraph.join(" ");
+          elements.push(
+            <p key={`p-${index}`} className="text-body mb-4">
+              {renderInlineMarkdown(paragraphText, `p-${index}`)}
+            </p>
+          );
           currentParagraph = [];
         }
-        elements.push(<h3 key={`h3-${index}`} className="text-h4 font-semibold font-space-mono mt-4 mb-2">{line.substring(3)}</h3>);
+        const h3Text = line.trim().replace(/^##\s+/, "");
+        elements.push(
+          <h3 key={`h3-${index}`} className="text-h4 font-semibold font-space-mono mt-4 mb-2">
+            {renderInlineMarkdown(h3Text, `h3-${index}`)}
+          </h3>
+        );
         return;
       }
 
       // Handle unordered lists
-      if (line.startsWith('- ') || line.startsWith('* ')) {
+      if (line.trimStart().startsWith('- ') || line.trimStart().startsWith('* ')) {
         if (currentParagraph.length > 0) {
-          elements.push(<p key={`p-${index}`} className="text-body mb-4">{currentParagraph.join(' ')}</p>);
+          const paragraphText = currentParagraph.join(" ");
+          elements.push(
+            <p key={`p-${index}`} className="text-body mb-4">
+              {renderInlineMarkdown(paragraphText, `p-${index}`)}
+            </p>
+          );
           currentParagraph = [];
         }
         if (isOrderedList) {
           flushList();
         }
         isUnorderedList = true;
-        currentListItems.push(line.substring(2).trim());
+        currentListItems.push(line.trimStart().replace(/^[-*]\s+/, "").trim());
         return;
       }
 
       // Handle numbered lists
-      if (/^\d+\.\s/.test(line)) {
+      if (/^\d+\.\s/.test(line.trimStart())) {
         if (currentParagraph.length > 0) {
-          elements.push(<p key={`p-${index}`} className="text-body mb-4">{currentParagraph.join(' ')}</p>);
+          const paragraphText = currentParagraph.join(" ");
+          elements.push(
+            <p key={`p-${index}`} className="text-body mb-4">
+              {renderInlineMarkdown(paragraphText, `p-${index}`)}
+            </p>
+          );
           currentParagraph = [];
         }
         if (isUnorderedList) {
           flushList();
         }
         isOrderedList = true;
-        const content = line.replace(/^\d+\.\s/, '').trim();
+        const content = line.trimStart().replace(/^\d+\.\s/, "").trim();
         currentListItems.push(content);
         return;
       }
@@ -165,16 +207,12 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
       // Empty line - flush paragraph
       if (!line.trim()) {
         if (currentParagraph.length > 0) {
-          const paragraphText = currentParagraph.join(' ');
-          // Handle bold text in paragraph
-          const parts = paragraphText.split('**');
-          const paragraphContent = parts.map((part, i) => {
-            if (i % 2 === 1) {
-              return <strong key={i} className="font-semibold">{part}</strong>;
-            }
-            return part;
-          });
-          elements.push(<p key={`p-${index}`} className="text-body mb-4">{paragraphContent}</p>);
+          const paragraphText = currentParagraph.join(" ");
+          elements.push(
+            <p key={`p-${index}`} className="text-body mb-4">
+              {renderInlineMarkdown(paragraphText, `p-${index}`)}
+            </p>
+          );
           currentParagraph = [];
         }
       }
@@ -183,16 +221,12 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
     // Flush any remaining content
     flushList();
     if (currentParagraph.length > 0) {
-      const paragraphText = currentParagraph.join(' ');
-      // Handle bold text in paragraph
-      const parts = paragraphText.split('**');
-      const paragraphContent = parts.map((part, i) => {
-        if (i % 2 === 1) {
-          return <strong key={i} className="font-semibold">{part}</strong>;
-        }
-        return part;
-      });
-      elements.push(<p key="p-final" className="text-body mb-4">{paragraphContent}</p>);
+      const paragraphText = currentParagraph.join(" ");
+      elements.push(
+        <p key="p-final" className="text-body mb-4">
+          {renderInlineMarkdown(paragraphText, "p-final")}
+        </p>
+      );
     }
 
     return elements;
@@ -207,14 +241,14 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               href="/blog"
               className="text-body text-blue-600 hover:text-blue-800 font-space-mono mb-4 inline-block"
             >
-              ← Back to Blog
+              ← Back to Blog Listing
             </Link>
             <h1 className="text-h2 font-semibold font-space-mono mt-4">
               {post.title}
             </h1>
             <div className="flex flex-row gap-4 items-center mt-4">
               <span className="text-sm text-gray-600 font-space-mono">
-                {new Date(post.date).toLocaleDateString('en-US', {
+                {new Date(post.date).toLocaleDateString('en-UK', {
                   year: 'numeric',
                   month: 'long',
                   day: 'numeric'

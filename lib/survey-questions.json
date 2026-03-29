@@ -40,7 +40,7 @@
     "name": "Data Usage",
     "type": "radio",
     "options": ["Yes", "No", "I don't know", "Prefer not to say"],
-    "required": false,
+    "required": true,
     "tooltip": "A business' transaction/order history, website, social media, online reviews and customer feedback are all potential data sources waiting to be mined for insights."
   },
   {
@@ -181,6 +181,14 @@
   },
   {
     "id": 23,
+    "question": "Define your business' Mission and Vision",
+    "name": "Mission and Vision",
+    "type": "text",
+    "options": [],
+    "required": true
+  },
+  {
+    "id": 24,
     "question": "Did you know that most commonly collected data in businesses can easily be used to solve and optimize ALL of the challenges and operations described in this survey?",
     "name": "Data Leverage",
     "type": "radio",
@@ -188,7 +196,7 @@
     "required": true
   },
   {
-    "id": 24,
+    "id": 25,
     "question": "Before taking the survey, how likely were you to implement a data driven approach to business?",
     "name": "Data Driven Approach Before",
     "type": "range",
@@ -196,7 +204,7 @@
     "required": true
   },
   {
-    "id": 25,
+    "id": 26,
     "question": "And after, now how likely are you to implement a data driven approach?",
     "name": "Data Driven Approach After",
     "type": "range",
@@ -204,7 +212,7 @@
     "required": true
   },
   {
-    "id": 26,
+    "id": 27,
     "question": "Final comments and thoughts",
     "name": "Final Comments",
     "type": "text",

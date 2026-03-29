@@ -30,8 +30,8 @@ export default function Header() {
 
           <nav className="grid grid-cols-3 text-h4 sm:justify-self-end font-space-mono lg:mx-2">
             <Link href={p === "/" ? "#strategy" : "/"} onClick={handleLinkClick} data-tracker-id="info-link" className={`${p === "/" ? "bg-blue-500 text-white" : ""} hover:bg-blue-500 duration-200 ease-in-out text-center px-2 `}>Info</Link>
-            <Link href="/blog" onClick={handleLinkClick} data-tracker-id="blog-link" className={`hover:bg-green-500 ${p.includes("blog") ? "bg-green-500 text-white" : ""} duration-200 ease-in-out text-center px-2`}>Blog</Link>
-            <Link href="/survey" onClick={handleLinkClick} data-tracker-id="survey-link" className={`hover:bg-orange-500 ${p.includes("survey") ? "bg-orange-500 text-white" : ""} duration-200 ease-in-out text-center px-2`}>{isMobile ? "Survey" : "SMED Survey"}</Link>
+            <Link href="/blog" onClick={handleLinkClick} data-tracker-id="blog-link-header" className={`hover:bg-green-500 ${p.includes("blog") ? "bg-green-500 text-white" : ""} duration-200 ease-in-out text-center px-2`}>Blog</Link>
+            <Link href="/survey" onClick={handleLinkClick} data-tracker-id="survey-link-header" className={`hover:bg-orange-500 ${p.includes("survey") ? "bg-orange-500 text-white" : ""} duration-200 ease-in-out text-center px-2`}>{isMobile ? "Survey" : "SMED Survey"}</Link>
           </nav>
 
         </div>

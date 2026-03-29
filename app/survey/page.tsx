@@ -17,6 +17,7 @@ function generateSessionId(): string {
 export default function SurveyPage() {
   const router = useRouter();
   const [sessionId] = useState(() => generateSessionId());
+  const [submitButtonText, setSubmitButtonText] = useState<string>("Submit");
   const [questions, setQuestions] = useState<QuestionModel[]>(SURVEY_QUESTIONS);
   const [email, setEmail] = useState<string>("");
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -49,14 +50,17 @@ export default function SurveyPage() {
   };
 
   const handleSubmit = () => {
+    setSubmitButtonText("Sending...");
     setSubmitError(null);
     const trimmedEmail = email.trim();
     if (!trimmedEmail) {
       setSubmitError("Please enter your email address.");
+      setSubmitButtonText("Submit");
       return;
     }
     if (!validateEmail(trimmedEmail)) {
       setSubmitError("Please enter a valid email address.");
+      setSubmitButtonText("Submit");
       return;
     }
 
@@ -140,7 +144,7 @@ export default function SurveyPage() {
             placeholder="Enter your email"
             className="w-full lg:w-1/2 p-2 border-2 border-black rounded-md bg-background"
           />
-          <Button onClick={handleSubmit} data-tracker-id="submit-survey" variant="default" className="rounded-md hover:text-white h-full">Submit</Button>
+          <Button onClick={handleSubmit} data-tracker-id="submit-survey" variant="default" className="rounded-md hover:text-white h-full">{}</Button>
         </div>
         {submitError && (
           <p className="text-h4 text-red-500 font-space-mono m-2 flex justify-center bg-background p-4 border border-black rounded-md">{submitError}</p>

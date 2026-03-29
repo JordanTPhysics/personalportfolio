@@ -11,7 +11,8 @@ import { TbSTurnDown } from "react-icons/tb";
 import ProjectCard from "@/components/ProjectCard";
 import ContactForm from "@/components/ContactForm";
 import { Switch } from "@/components/ui/switch";
-import { trackMouseEnter, trackSwitchClick } from "@/lib/analytics";
+import { trackLinkClick, trackMouseEnter, trackSwitchClick } from "@/lib/analytics";
+import Link from "next/link";
 
 const roles = [" Data Scientist", " Business Partner", " Full Stack Developer", ' "Numbers Guy"'];
 const products = ['Pricing Models', 'Data Pipelines', 'Feedback Insights', 'Behaviour Models', 'Demand Forecasts', 'Website Tracking']
@@ -59,6 +60,10 @@ export default function Home() {
     trackMouseEnter(e.currentTarget.id);
   };
 
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    trackLinkClick(e.currentTarget.href, e.currentTarget.dataset.trackerId!);
+  };
+
   return (
     <main className="mx-auto lg:max-w-[80vw] w-[90vw]  text-black">
       <section id="about" className="border-l border-r border-black" onMouseEnter={handleSectionMouseEnter}>
@@ -95,12 +100,12 @@ export default function Home() {
               </p>
             </div>
             <div className="w-1/3">
-              <Image src={`/images/gold${isMobile ? "_trim" : ""}.jpg`} alt="Gold" width={500} height={500} className="w-full h-full object-cover"/>
+              <Image src={`/images/gold${isMobile ? "_trim" : ""}.jpg`} alt="Gold" width={500} height={500} className="w-full h-full object-cover" />
             </div>
           </div>
           <div className="flex flex-row border-t-2">
             <div className="w-1/3">
-              <Image src={`/images/savings${isMobile ? "_trim" : ""}.jpg`} alt="Savings" width={500} height={500} className="w-full h-full object-cover"/>
+              <Image src={`/images/savings${isMobile ? "_trim" : ""}.jpg`} alt="Savings" width={500} height={500} className="w-full h-full object-cover" />
             </div>
             <div className="text-right border-l-2 border-black bg-linear-to-tl from-blue-500 to-white inset-border lg:p-8 duration-200 ease-in-out hover:bg-linear-to-br w-3/4">
               <h2 className="text-h2 font-semibold font-space-mono">Save Money</h2>
@@ -117,7 +122,7 @@ export default function Home() {
               </p>
             </div>
             <div className="border-y-2 border-black inset-border">
-              <Image src={`/images/chat${isMobile ? "_trim" : ""}.jpg`} alt="Customers" width={300} height={200} className="w-full h-full object-cover"/>
+              <Image src={`/images/chat${isMobile ? "_trim" : ""}.jpg`} alt="Customers" width={300} height={200} className="w-full h-full object-cover" />
             </div>
           </div>
         </div>
@@ -173,18 +178,6 @@ export default function Home() {
                 As your business and its needs evolve, and as we gain more insights from your data, we can target and track more specific niches to new levels of success and customer satisfaction.
               </p>
             </div>
-            {/* <div className="flex justify-center my-2">
-              <TbSTurnDown className="text-4xl text-black" />
-            </div>
-            <div
-              ref={(el) => { stepRefs.current[4] = el; }}
-              className={`border-2 border-black inset-border bg-gray-300 p-6 transition-opacity duration-700 ease-in-out ${visibleSteps.has(4) ? 'opacity-100' : 'opacity-0'}`}
-            >
-              <h3 className="text-h3 font-semibold font-space-mono mb-2">(Bonus) Step 5: Repeat</h3>
-              <p className="text-body">
-                Iterate over steps 3 and 4 to keep improving, Double Down on Big Wins. If anything isn't working, I'll find out why. Occasionally, we may add more KPIs and data collection as your business evolves.
-              </p>
-            </div> */}
           </div>
         </div>
       </section>
@@ -208,7 +201,7 @@ export default function Home() {
         </div>
         <div className="flex justify-evenly p-2">
           <span className="text-h4">Tech Stack</span>
-          <Switch data-tracker-id="tech-stack-switch" size="lg" checked={skillsShown === "Services"} onCheckedChange={handleTechStackSwitch}/>
+          <Switch data-tracker-id="tech-stack-switch" size="lg" checked={skillsShown === "Services"} onCheckedChange={handleTechStackSwitch} />
           <span className="text-h4">Services</span>
         </div>
 
@@ -226,6 +219,13 @@ export default function Home() {
             <p className="text-body">
               I believe in the power of data to empower even the smallest businesses to build success in our communities from the ground up.
               Physical Science tells us the laws of the universe, Data Science tells us the laws of business.
+              Advancements in Data Science, Machine Learning and AI have proven to be worth billions in investments for the world's largest industries.
+              My mission is simply to empower and educate small and even 1-person businesses with the same tools and knowledge to become successful in their own right.
+              You can read more about it in my blog or if you're unsure if it's right for you try out my SME Data survey!
+              <div className="flex flex-row justify-evenly text-white my-2">
+                <Link href="/blog" onClick={handleLinkClick} data-tracker-id="blog-link" className="text-h2 mx-2 px-8 py-2 rounded-lg border border-emerald-600 bg-linear-to-br from-green-500 to-emerald-600 hover:from-emerald-600 hover:to-green-500 hover:scale-105 duration-200 ease-in-out">Blog</Link>
+                <Link href="/survey" onClick={handleLinkClick} data-tracker-id="survey-link" className="text-h2 mx-2 px-8 py-2 rounded-lg border border-amber-600 bg-linear-to-br from-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-500 hover:scale-105 duration-200 ease-in-out">Survey</Link>
+              </div>
             </p>
           </div>
         </div>
@@ -273,7 +273,7 @@ export default function Home() {
       <section id="contact" className="border-x border-black" onMouseEnter={handleSectionMouseEnter}>
         <div className="flex flex-col">
           <h2 className="text-h2 font-semibold font-space-mono px-2 border-y bg-background">
-            Get in touch
+            Get in Touch
           </h2>
           <div className="p-6 ">
             <p className="text-body mb-6">

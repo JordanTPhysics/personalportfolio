@@ -8,36 +8,36 @@ export interface BlogPost {
   tags?: string[];
 }
 
-export const blogPosts: BlogPost[] = [];
-//   {
-//     slug: "getting-started-with-data-analytics",
-//     title: "Getting Started with Data Analytics for Small Businesses",
-//     excerpt: "Learn how small businesses can leverage data analytics to make better decisions and drive growth.",
-//     date: "2024-01-15",
-//     author: "Jordan Thijssen",
-//     content: `# Getting Started with Data Analytics for Small Businesses
+export const blogPosts: BlogPost[] = [
+  {
+    slug: "small-business-vs-big-corp",
+    title: "SMEs and Big Corps: Who Controls the Markets and who grows the Economy?",
+    excerpt: "As Humanity (and now AI) pushes economic development to new frontiers, who stands to make the biggest impact on markets and communities on local and global scales?",
+    date: "2026-03-27",
+    author: "Jordan Thijssen",
+    content: `
+# SMEs and big Corps: Who Controls the Markets and who grows the Economy?
+## Market Control
 
-// Data analytics might seem like something only large corporations can afford, but that's not the case. Small businesses can benefit tremendously from understanding their data.
+Large global corporations undeniably control global markets.
+They control significant shares in sectors like technology, retail, and manufacturing due to influence, vast resources, and global reach.
+Their ability to innovate and capture consumer loyalty enables them to maintain competitive advantages.
+However, according to a [2021 European OECD study](https://www.oecd.org/en/topics/sme-indicators-benchmarking-and-monitoring.html) SMEs make up 99% of all registered businesses, employ 2/3 of the workforce and contribute over half of the economy's GDP.
 
-// ## Why Data Analytics Matters
+## Too Soon for Economic Boons?
 
-// For small businesses, every decision counts. Data analytics helps you:
-// - Make informed decisions based on facts, not guesswork
-// - Identify opportunities for growth
-// - Understand your customers better
-// - Optimize your operations
+The first step is to identify what data you're already collecting. Most businesses have more data than they realize:
+- Sales records
+- Customer information
+- Website analytics
+- Social media engagement
 
-// ## Getting Started
+## Small Businesses, Big Challenges
 
-// The first step is to identify what data you're already collecting. Most businesses have more data than they realize:
-// - Sales records
-// - Customer information
-// - Website analytics
-// - Social media engagement
-
-// Start small, focus on one area, and expand from there.`,
-//     tags: ["Data Analytics", "Small Business", "Getting Started"]
-//   },
+Start small, focus on one area, and expand from there.`,
+    tags: ["Economy", "Markets", "Small Business", "Big Corp", "Community"]
+  }
+];
 
 
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {

@@ -33,4 +33,8 @@ export class QuestionModel {
         );
     }
 
+    static toCsv(questions: QuestionModel[]): string {
+        return questions.map((question) => `${question.id},${question.question},${question.name},${question.type},${question.options.join(",")},${question.required},${question.tooltip},${question.link},${question.source}`).join("\n");
+    }
+
 }
