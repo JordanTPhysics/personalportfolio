@@ -1,6 +1,10 @@
 import { readFileSync } from "fs";
 import { join } from "path";
 import { parseCsv } from "@/lib/csv";
+import {
+  volcanoScrapedByNumber,
+  type VolcanoScrapedDetails,
+} from "./volcano-scraped-data";
 
 export interface Volcano {
   id: string;
@@ -14,6 +18,7 @@ export interface Volcano {
   alertLevel: string;
   colorCode: string;
   region: string;
+  details: VolcanoScrapedDetails | null;
 }
 
 /** CSV row shape matching VolcanoData.csv headers */
@@ -47,20 +52,23 @@ function rowToVolcano(row: CsvRow): Volcano | null {
   const lng = parseNumber(row.LongitudeDecimal);
   if (lat == null || lng == null) return null;
 
+  const id = row.VolcanoNumber?.trim() || "";
+  const details = volcanoScrapedByNumber.get(id) ?? null;
   const summitElevation = parseNumber(row.SummitElevM) ?? 0;
 
   return {
-    id: row.VolcanoNumber?.trim() || "",
+    id,
     name: row.VolcanoName?.trim() || "",
     lat,
     lng,
     country: row.State?.trim() || "",
-    lastEruption: "",
+    lastEruption: details?.lastKnownEruption ?? "",
     summitElevation,
-    volcanoType: "",
+    volcanoType: details?.landform ?? "",
     alertLevel: "",
     colorCode: "GREEN",
     region: row.VolcanicSubregion?.trim() || "",
+    details,
   };
 }
 

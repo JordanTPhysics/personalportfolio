@@ -216,7 +216,7 @@ export default function Home() {
             <p className="text-h3 border-b mb-4">
               Emerging Data Scientist with a background in Energy Software Development and BSc Physics from the University of Kent.
             </p>
-            <p className="text-body">
+            <span className="text-body">
               I believe in the power of data to empower even the smallest businesses to build success in our communities from the ground up.
               Physical Science tells us the laws of the universe, Data Science tells us the laws of business.
               Advancements in Data Science, Machine Learning and AI have proven to be worth billions in investments for the world's largest industries.
@@ -226,7 +226,7 @@ export default function Home() {
                 <Link href="/blog" onClick={handleLinkClick} data-tracker-id="blog-link" className="text-h2 mx-2 px-8 py-2 rounded-lg border border-emerald-600 bg-linear-to-br from-green-500 to-emerald-600 hover:from-emerald-600 hover:to-green-500 hover:scale-105 duration-200 ease-in-out">Blog</Link>
                 <Link href="/survey" onClick={handleLinkClick} data-tracker-id="survey-link" className="text-h2 mx-2 px-8 py-2 rounded-lg border border-amber-600 bg-linear-to-br from-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-500 hover:scale-105 duration-200 ease-in-out">Survey</Link>
               </div>
-            </p>
+            </span>
           </div>
         </div>
       </section>

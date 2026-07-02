@@ -26,15 +26,11 @@ However, according to a [2021 European OECD study](https://www.oecd.org/en/topic
 
 ## Too Soon for Economic Boons?
 
-The first step is to identify what data you're already collecting. Most businesses have more data than they realize:
-- Sales records
-- Customer information
-- Website analytics
-- Social media engagement
+
 
 ## Small Businesses, Big Challenges
 
-Start small, focus on one area, and expand from there.`,
+`,
     tags: ["Economy", "Markets", "Small Business", "Big Corp", "Community"]
   }
 ];

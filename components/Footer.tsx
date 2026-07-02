@@ -2,15 +2,19 @@
 
 import { useMediaQuery } from "@/app/hooks/use-media-query";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 import { trackLinkClick, trackMouseEnter } from "@/lib/analytics";
 
 export default function Footer() {
+    const pathname = usePathname();
     const githubUrl = "https://github.com/JordanTPhysics";
     const linkedinUrl = "https://www.linkedin.com/in/jordan-thijssen-373a431a5/";
 
     const iconSize = useMediaQuery("(max-width: 768px)") ? 24 : 36;
+
+    if (pathname.startsWith("/geothermal")) return null;
     return (
         <footer className="border-t border-black bg-[#F7F6F2]" onMouseEnter={() => trackMouseEnter("footer")}>
           <div className="border-l border-r border-black py-12 px-6">
